@@ -14,7 +14,6 @@ $_SESSION['dir'] = substr(__DIR__, strlen($_SERVER['DOCUMENT_ROOT']));
 // Carga las clases necesarias
 require_once $_SERVER['DOCUMENT_ROOT'].$_SESSION['dir'].'/includes/control/Clase.php';
 
-
 Clase::define('ProductoModelo');
 Clase::define('ArticuloModelo');
 
@@ -29,7 +28,7 @@ echo "LEE LISTA DE PRECIOS DE: </br>";
 echo "DROGUERIA DEL SUD S.A.<br>";
 echo "========================================<br>";
 echo "<br>";
-echo "<br>Son: ".$numero_registros." registros en lista del proveedor<br>";
+echo "<br>Son: ".$numero_registros." registros en lista de Drog. DEL SUD<br>";
 echo "<br>";
 
 // Pone los totalizadores y contadores en 0
