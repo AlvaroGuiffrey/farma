@@ -1,0 +1,11 @@
+<!-- Paginador siguiente -->
+<input type="hidden" name="nroPagina" value={nroPagina}>
+<input type="hidden" name="cantPaginas" value={cantPaginas}>
+<input type="hidden" name="cantidad" value={cantidad}>
+<div align="center">
+	<div class="btn-group" role="group" aria-label="paginador">
+		<button type="button" class="btn btn-default" data-toggle="tooltip" title="Página del listado">Página <span class="badge">{nroPagina}</span> de <span class="badge">{cantPaginas}</span></button>
+		<button type="submit" class="btn btn-default" name="bt_pagina_sig" data-toggle="tooltip" title="Botón para ir a página siguiente">
+			Siguiente <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span></button>	
+	</div>
+</div>

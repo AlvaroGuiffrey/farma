@@ -1,0 +1,32 @@
+<!-- Datos del proveedor para seleccionar en ventana del módulo pedido -->
+	<table>
+		<caption>Datos del Proveedor para pedido</caption>
+
+		<tr><td title="Seleccione el proveedor para realizar pedido"><label>Proveedor <span class="badge">{cantidadProveedor}</span></label></td><td>:</td>
+			<td>[selectProveedor]</td></tr>
+		<tfoot>		</tfoot>
+	</table>
+	<hr>
+	<table>
+		<caption>Canal de comunicación para pedido</caption>
+		<tr><td title="Seleccione el canal para realizar pedido"></td>
+		<td style="text-align:center">
+                <input type="radio" name="canal" value="Telefonico" checked title="Pedido por llamado telefónico del proveedor">
+				<i class="glyphicon glyphicon-phone-alt" style="color:blue"></i> Telefónico -
+				<input type="radio" name="canal" value="CardShop" title="Pedido por carro de compras en página web del proveedor">			
+				<i class="glyphicon glyphicon-shopping-cart" style="color:blue"></i> Página Web - 
+				<input type="radio" name="canal" value="Email" title="Pedido por Email al proveedor">
+				<i class="glyphicon glyphicon-send" style="color:blue"></i>  Email - 
+				<input type="radio" name="canal" value="Visitador" title="Pedido al visitador del proveedor">
+				<i class="glyphicon glyphicon-briefcase" style="color:blue"></i>  Visitador -
+				<input type="radio" name="canal" value="en Local" title="Pedido en local del proveedor">
+				<i class="glyphicon glyphicon-home" style="color:blue"></i>  Local Prov.
+		</td></tr>
+		<tfoot>		</tfoot>
+	</table>
+	<hr>
+	<input type="hidden" name="cantidad" value="{cantidad}">
+	<input type="hidden" name="lote" value="{lote}">
+	<input type="hidden" name="cantLotes" value="{cantLotes}">
+	
+	

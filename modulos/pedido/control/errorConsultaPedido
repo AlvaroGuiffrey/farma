@@ -1,0 +1,20 @@
+07/12/2019
+Fatal error: Uncaught Error: Call to undefined function mysql_query() in 
+C:\xampp\htdocs\farma\includes\control\CalcularProductosVendidos.php:81 
+Stack trace: 
+#0 C:\xampp\htdocs\farma\modulos\pedido\control\PedidoControl.php(472):
+ CalcularProductosVendidos::calculaVentas('1021203501') 
+ #1 C:\xampp\htdocs\farma\modulos\pedido\control\PedidoControl.php(126): PedidoControl->accionControl(Object(LoginVO)) 
+ #2 C:\xampp\htdocs\farma\modulos\pedido\index.php(73): PedidoControl->inicio(Object(LoginVO), 'Iniciar') 
+ #3 C:\xampp\htdocs\farma\modulos\pedido\index.php(77): Index::execute() 
+ #4 {main} thrown in C:\xampp\htdocs\farma\includes\control\CalcularProductosVendidos.php on line 81
+ 
+10/12/2019
+Fatal error: Uncaught ArgumentCountError: Too few arguments to function PedidoTabla::armaTabla(), 
+5 passed in C:\xampp\htdocs\farma\modulos\pedido\control\PedidoControl.php on line 457 and 
+exactly 16 expected in C:\xampp\htdocs\farma\modulos\pedido\includes\PedidoTabla.php:71 Stack trace: 
+#0 C:\xampp\htdocs\farma\modulos\pedido\control\PedidoControl.php(457): PedidoTabla::armaTabla(Array, 10, 'PedirL', 'COOP. FARM. DEL...', 'CardShop') 
+#1 C:\xampp\htdocs\farma\modulos\pedido\control\PedidoControl.php(119): PedidoControl->accionControl(Object(LoginVO)) 
+#2 C:\xampp\htdocs\farma\modulos\pedido\index.php(73): PedidoControl->inicio(Object(LoginVO), 'Iniciar') 
+#3 C:\xampp\htdocs\farma\modulos\pedido\index.php(77): Index::execute() 
+#4 {main} thrown in C:\xampp\htdocs\farma\modulos\pedido\includes\PedidoTabla.php on line 71 

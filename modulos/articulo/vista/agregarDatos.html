@@ -1,0 +1,36 @@
+	<table>
+		<caption>Datos del Artículo</caption>
+		
+		<tr><td title="Código del artículo"><label>Código</label></td><td style="width:30px">:</td>
+			<td><input pattern="[0-9]{7,}" type="number" class="form-control" id="codigo" name="codigo" maxlength=8 placeholder="del artículo" title="Ingrese el código del artículo" tabindex=2 autofocus></td></tr>
+		<tr><td title="Código del artículo asignado por la marca"><label>Código Marca</label></td><td>:</td>
+			<td><input type="number" class="form-control" id="codigoMarca" name="codigoMarca"  maxlength=15 placeholder="del artículo" title="Ingrese el código del artículo asignado por la marca" tabindex=3></td></tr>
+		<tr><td title="Nombre del artículo"><label>Nombre</label></td><td>:</td>
+			<td><input type="text" class="form-control" id="nombre" name="nombre" size=30 maxlength=30 placeholder="del artículo" title="Ingrese nombre del artículo" tabindex=4></td></tr>			
+		<tr><td title="Comentario sobre el artículo"><label>Comentario</label></td><td>:</td>
+			<td><input type="text" class="form-control" id="comentario" name="comentario" maxlength=30 placeholder="sobre el artículo" title="Ingrese comentario sobre el artículo" tabindex=5></td></tr>
+		<tr><td title="Seleccione la marca del artículo"><label>Marca <span class="badge">{cantidadMarca}</span></label></td><td>:</td>
+			<td>[selectMarca]</td></tr>
+		<tr><td title="Seleccione el rubro del artículo"><label>Rubro <span class="badge">{cantidadRubro}</span></label></td><td>:</td>
+			<td>[selectRubro]</td></tr>
+		<tr><td title="Margen bruto del artículo"><label>Margen bruto</label></td><td>: %</td>
+			<td><input type="number" class="form-control" id="margen" name="margen" maxlength=5 placeholder="del artículo" title="Ingrese el margen bruto del artículo" tabindex=8></td></tr>	
+		<tr><td title="Costo del artículo"><label>Costo</label></td><td>: $</td>
+			<td><input type="number" class="form-control" id="costo" name="costo" maxlength=9 placeholder="del artículo" title="Ingrese el costo del artículo" tabindex=9></td></tr>
+		<tr><td title="Precio del artículo"><label>Precio</label></td><td>: $</td>
+			<td><input type="number" class="form-control" id="precio" name="precio" maxlength=9 placeholder="del artículo" title="Ingrese el precio del artículo" tabindex=10></td></tr>
+		<tr><td title="Fecha del precio del artículo"><label>Fecha Precio</label></td><td>:</td>
+			<td><input type="date" class="form-control" id="fechaPrecio" name="fechaPrecio" maxlength=10 placeholder="del artículo (AAAA-MM-DD)" title="Ingrese la fecha del precio del artículo" tabindex=11></td></tr>
+		<tr><td title="Stock del artículo"><label>Stock</label></td><td>:</td>
+			<td><input type="number" class="form-control" id="stock" name="stock" maxlength=6 placeholder="del artículo" title="Ingrese el stock del artículo" tabindex=12></td></tr>	
+		<tr><td title='Seleccione el estado del artículo'><label>Estado</label></td><td>:</td>
+			<td><label class="ckeckbox-inline">
+					<input type="radio" name="estado" value="1" checked title='Artículo con estado activo'> Activo - 
+				</label>	
+				<label class="ckeckbox-inline">	
+					<input type="radio" name="estado" value="0" title='Artículo con estado pasivo'> Pasivo 
+				</label>
+			</td></tr>
+			
+		<tfoot>		</tfoot>
+	</table>

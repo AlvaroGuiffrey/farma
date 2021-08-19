@@ -1,0 +1,26 @@
+<div class="jumbotron">
+	<table>
+		<caption><tr><td>Datos de registros: </td></tr><tr><td>{razonSocial}</td></tr></caption>
+		
+	</table>
+	<table><tr><hr/></tr>
+		<tr><td title="Número del pedido y canal utilizado"><label># Pedido - Canal</label></td><td style="width:20px">:</td><td> {idPedido} - ({canal}) </td></tr>
+		<tr><td title="Total de productos pedidos al proveedor"><label>Cantidad productos</label></td><td style="width:20px">:</td><td> {cantPedidos} </td></tr>
+		<tr><td title="Total de unidades del pedido al proveedor"><label>Cantidad unidades</label></td><td style="width:20px">:</td><td> {cantUnidades} </td></tr>
+		<tr><td></td></tr>
+		<tr><td title="Total de asignaciones eliminados"><label>Se eliminaron asignaciones</label></td><td>:</td><td> {cantEliminados} </td></tr>
+		<tr><td title="Total de pendientes descartados"><label>Se descartaron pendientes</label></td><td>:</td><td> {cantDescartados} </td></tr>
+	</table>
+	<input type="hidden" name="cantidad" value="{cantidad}">
+	<input type="hidden" name="razonSocial" value="{razonSocial}">
+	<input type="hidden" name="canal" value="{canal}">
+	<input type="hidden" name="lote" value="{lote}">
+	<input type="hidden" name="cantLotes" value="{cantLotes}">
+	<input type="hidden" name="idPedido" value="{idPedido}">
+	<input type="hidden" name="cantPendientes" value="{cantPendientes}">
+	<input type="hidden" name="cantPedidos" value="{cantPedidos}">
+	<input type="hidden" name="cantUnidades" value="{cantUnidades}">
+	<input type="hidden" name="cantEliminados" value="{cantEliminados}">
+	<input type="hidden" name="cantDescartados" value="{cantDescartados}">
+	<input type="hidden" name="idProveedor" value="{idProveedor}">
+</div>

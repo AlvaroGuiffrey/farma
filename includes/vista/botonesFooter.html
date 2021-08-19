@@ -1,0 +1,37 @@
+<!-- Botones HTML -->
+<div align="center">
+<div class="btn-group" role="group" aria-label="footer">
+<!--  Botón Volver -->
+	<a href="{dir}/aplicaciones/index.php" role="button" class="btn btn-default" title="Volver anterior" tabindex=201><span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span></a>
+
+<!--  Botón Salir -->
+	<a href="{dir}/modulos/login/index.php?accion=Salir" role="button" class="btn btn-default" title="Salir del sistema" tabindex=202><span class="glyphicon glyphicon-off" aria-hidden="true"></span></a>
+
+<!-- Botón Info -->
+	<a href="#myModal" role="button" class="btn btn-default" data-toggle="modal" title="Botón de información" tabindex=203>
+		<span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> 
+	</a>
+</div>
+<!-- Fin Botones HTML -->
+	<!-- Modal HTML -->
+	<div id="myModal" class="modal fade">
+   	 <div class="modal-dialog">
+     	  <div class="modal-content">
+          	  <div class="modal-header">
+               	 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+              	 <h4 class="modal-title">Información</h4>
+             </div>
+           	 <div class="modal-body">
+                {informacion}
+                <p class="text-warning"><small>Si tiene dudas consulte con el Administrador del sistema.</small></p>
+             </div>
+             <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal" title="Botón para cerrar información">
+                	<span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Cerrar
+                </button>
+             </div>
+       	 </div>
+  	  </div>
+	</div>
+	<!-- Fin Modal HTML --><!-- Button HTML (to Trigger Modal) -->
+</div>

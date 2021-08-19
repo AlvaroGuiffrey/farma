@@ -1,0 +1,42 @@
+<!-- Etiquetar datos del módulo proveedor -->
+<div class="jumbotron">
+	<table>
+		<caption>Datos del proveedor</caption>
+		<tr><td title="Indice del proveedor"><label>#</label></td><td  style="width:20px">:</td>
+			<td>{id}</td></tr>
+		<tr><td title="Razón social del proveedor"><label>Razón Social</label></td><td>:</td>
+			<td>{razonSocial}</td></tr>
+		<tr><td title="Identificación breve del proveedor de referencia con lista de precios"><label>Iniciales de ref.</label></td><td>:</td>
+			<td>{inicial}</td></tr>
+		<tfoot></tfoot>
+	</table>  
+	<hr>
+	<table>
+		<caption>Registros de Productos</caption>
+		<tr><td title="Cantidad de productos del proveedor"><label>Productos del proveedor</label></td><td  style="width:20px">:</td>
+			<td>{cantProductos}</td></tr>
+		<tr><td title="Cantidad de Productos del proveedor con artículos equivalentes"><label>Productos equivalentes con Artículos</label></td><td  style="width:20px">:</td>
+			<td>{cantEquivalentes}</td></tr>
+		<tr><td title="Cantidad de nuevos productos equivalentes"><label>Nuevos Productos equivalentes</label></td><td  style="width:20px">:</td>
+			<td>{cantNuevosProductos}</td></tr>		 
+	</table>
+	<hr>
+	<table>
+		<caption>Registros de Artículos</caption>
+		<tr><td title="Cantidad de artículos sin proveedor etiquetado"><label>Artículos sin etiquetar</label></td><td  style="width:20px">:</td>
+			<td>{cantSinEtiquetar}</td></tr>
+		<tr><td title="Cantidad de artículos etiquetados con el proveedor"><label>Artículos etiquetados</label></td><td  style="width:20px">:</td>
+			<td>{cantEtiquetados}</td></tr>		
+		<tr><td title="Cantidad de nuevos artículos etiquetados con el proveedor"><label>Nuevos Artículos etiquetados</label></td><td  style="width:20px">:</td>
+			<td>{cantNuevosArticulos}</td></tr>
+	</table>	
+	<input type="hidden" id="id" name="id" value="{id}">
+	<input type="hidden" id="razonSocial" name="razonSocial" value="{razonSocial}">
+	<input type="hidden" id="inicial" name="inicial" value="{inicial}">
+	<input type="hidden" id="cantProductos" name="cantProductos" value="{cantProductos}">
+	<input type="hidden" id="cantEquivalentes" name="cantEquivalentes" value="{cantEquivalentes}">
+	<input type="hidden" id="cantNuevosProductos" name="cantNuevosProductos" value="{cantNuevosProductos}">
+	<input type="hidden" id="cantSinEtiquetar" name="cantSinEtiquetar" value="{cantSinEtiquetar}">
+	<input type="hidden" id="cantEtiquetados" name="cantEtiquetados" value="{cantEtiquetados}">
+	<input type="hidden" id="cantNuevosArticulos" name="cantNuevosArticulos" value="{cantNuevosArticulos}">
+</div>

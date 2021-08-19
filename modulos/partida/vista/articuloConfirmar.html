@@ -1,0 +1,44 @@
+<div class="well">
+	<table class="table table-striped">
+	<caption>Confirmar Artículo del Renglón</caption>
+<!-- Título de confirmar agregar a renglón -->
+		<thead><tr>
+			<th title='Código del artículo a agregar'> Código </th>
+			<th title='Datos del artículo a agregar'> Datos del Artículo </th>
+			<th title='Cantidad de unidades del artículo a agregar'> Cantidad </th>
+			<th title='Costo unitario del artículo a agregar'> Costo </th>
+			<th title='Total del renglón a agregar'> Total </th>
+			<th></th>
+		</tr></thead>
+<!-- Datos agregar a renglón -->
+		<tbody>
+	<!-- Primer renglon de datos -->		
+		<tr>
+			<td>{codigo}</td>			
+			<td>{nombreArticulo}</td>
+			<td>{cantidadUn}</td>
+			<td>${costo}</td>
+			<td>${netoRenglon}</td>
+			<td></td>
+		</tr>
+	<!-- Segundo renglon de datos -->
+		<tr>
+			<td>Marca:</td><td>{nombreMarca}</td><td>({nombreRubro})</td><td></td><td></td>
+		</tr>
+
+<!-- Final datos confirmar agregar a renglón -->		
+		</tbody>
+	</table>
+
+<!--  -->
+	<input type="hidden" name="idArticulo" value="{idArticulo}">
+	<input type="hidden" name="cantidadUn" value="{cantidadUn}">
+	<input type="hidden" name="costo" value="{costo}">
+	<button type="submit" class="btn btn-primary" name="bt_confirmar" data-toggle="tooltip" data-placement="bottom" title="Botón confirmar datos" tabindex=10> 
+ 		<span class="glyphicon glyphicon-check" aria-hidden="true"></span> Confirmar</button>
+
+<!-- Botón para agregar otro-->
+	<button type="submit" class="btn btn-success" name="bt_agregar_otro" data-toggle="tooltip" data-placement="bottom" title="Botón para agregar otro" tabindex=56>
+    <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span> Agregar Otro</button> 
+  			 
+</div>

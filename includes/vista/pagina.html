@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1"> 
+<meta name="author" content="Alvaro Guiffrey">
+<title>{tituloPagina}</title>
+<link href="{dir}/libs/js/bootstrap-3.3.2/css/bootstrap.min.css" rel="stylesheet" media="screen">
+<link href="{dir}/libs/js/bootstrap-3.3.2/css/bootstrap-icon.css" rel="stylesheet" media="screen">
+<link href="{dir}/libs/js/bootstrap-datepicker-1.4.0/css/bootstrap-datepicker3.min.css" rel="stylesheet" media="screen">
+<link href="{dir}/libs/js/ajax/css/ajax.css" rel="stylesheet" media="screen">
+<link href="{dir}/includes/css/pagina.css" rel="stylesheet" media="screen">
+<!-- Estilo para centrar imagen en Modal -->	
+<style>
+	IMG.img-center{
+		display: block;
+		margin-left: auto;
+		margin-right: auto;
+		border: none;
+		}
+</style>
+</head>
+<body>
+<!-- Script de terceros-->
+<script src="{dir}/libs/js/jquery-2.1.3/jquery.min.js"></script>
+<script src="{dir}/libs/js/bootstrap-3.3.2/js/bootstrap.min.js"></script>
+<script src="{dir}/libs/js/bootstrap-3.3.2/js/bootstrap-tooltip.js"></script>
+<script src="{dir}/libs/js/bootstrap-datepicker-1.4.0/js/bootstrap-datepicker.min.js"></script>
+<script src="{dir}/libs/js/bootstrap-datepicker-1.4.0/locales/bootstrap-datepicker.es.min.js"></script>
+<script src="{dir}/libs/js/ajax/ajax.js"></script>
+<!-- Script de la aplicación -->
+[scriptJS]
+<!-- Tooltip -->
+<script type="text/javascript">
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();   
+});
+</script>
+<script>
+function pulsar(e) {
+  // averiguamos el código de la tecla pulsada (keyCode para IE y which para Firefox)
+  tecla = (document.all) ? e.keyCode :e.which;
+  // si la tecla no es 13 devuelve verdadero,  si es 13 devuelve false y la pulsación no se ejecuta
+  return (tecla!=13);
+}
+</script> 
+<!-- Fin Script -->
+
+<!-- heading -->
+<!-- Container -->
+<div class="container">
+<!-- Menú -->
+[menu]
+<!-- Panel de trabajo -->
+<div class="panel panel-default">
+<!-- Heading del panel  (Título del panel) -->
+	<div class="panel-heading">
+    	<h3 class="panel-title"><i>{tituloPanel}</i></h3>
+   	</div>
+<!-- Body del panel (Alertas y contenidos) -->
+  	<div class="panel-body">
+ 	 	[alertaSuceso]
+ 	 	[alertaPeligro]
+ 	 	[alertaAdvertencia]
+ 	 	[alertaInfo]
+  		[contenido]
+  		
+	</div>
+<!-- Footer del Panel (Botones del footer) -->
+	<div class="panel-footer">
+	[botones]
+	</div>
+</div>
+<!-- Fin Panel -->
+<!-- Footer -->
+<div id="footer" align="center" title="Contacto: alvaroguiffrey@gmail.com">
+	<font size=1 color="grey"><i>Alvaro Guiffrey &#169 Copyright 2015</i></font>
+</div>
+<!-- Fin Footer -->
+</div>
+<!-- Fin Container -->
+
+</body>
+</html> 

@@ -1,0 +1,41 @@
+<!-- Contenido de acción listar del módulo artículos-->
+<div id="listar">
+	<form class="form-horizontal" role="form" action="" method="post">
+<!-- Selector de Acciones -->
+		<div>
+			<!--  <button class="btn btn-info" data-toggle="tooltip" data-placement="bottom" title="Total del listado">{tituloBadge} <span class="badge">{cantidad}</span></button>
+			<button type="submit" class="btn btn-success" name="bt_agregar" data-toggle="tooltip" data-placement="bottom" title="Botón para agregar" tabindex=1>
+     	 	<span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span> Agregar</button> -->
+       	 	<ul class="nav nav-pills" role="tablist">
+   				<li><button class="btn btn-info" data-toggle="tooltip" data-placement="bottom" title="Total de artículos">{tituloBadge} <span class="badge">{cantidad}</span></button>
+   				<button type="submit" class="btn btn-success" name="bt_agregar" data-toggle="tooltip" data-placement="bottom" title="Botón para agregar" tabindex=1>
+     	 		<span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span> Agregar</button>
+   				</li>
+   				<li role="presentation" class="dropdown" data-toggle="tooltip" title="Boton para seleccionar listados">
+   					<!-- <a id="drop1" href="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="true">
+   						<span class="glyphicon glyphicon-list" aria-hidden="true" ></span> Listar <span class="caret"></span>
+   					</a> -->
+   					<button class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="true"><span class="glyphicon glyphicon-list" aria-hidden="true" ></span> Listar <span class="caret"></span></button>
+   					<ul id="menu1" class="dropdown-menu" role="menu" aria-labelledby="drop1">
+   						<li role="presentation" class="dropdown-header"> Listados </li>
+     	 				<li role="presentation"><button type="submit" class="btn btn-link" name="bt_listar_activos" data-toggle="tooltip" data-placement="bottom" title="Listar artículos activos" tabindex=1> Artículos activos</button></li>
+     	 				<li role="presentation" class="divider"></li>
+     	 				<li role="presentation"><button type="submit" class="btn btn-link" name="bt_listar_pasivos" data-toggle="tooltip" data-placement="bottom" title="Listar artículos pasivos" tabindex=1> Artículos pasivos</button></li>
+   					</ul>
+   				</li>
+  				<li role="presentation" class="dropdown" data-toggle="tooltip" title="Boton para buscar artículos">
+   					<button class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="true"><span class="glyphicon glyphicon-search" aria-hidden="true" ></span> Buscar <span class="caret"></span></button>
+   					<ul id="menu2" class="dropdown-menu" role="menu" aria-labelledby="drop2">
+   						<li role="presentation" class="dropdown-header"> Búsquedas </li>
+     	 				<li role="presentation"><button type="submit" class="btn btn-link" name="bt_buscar_activos" data-toggle="tooltip" data-placement="bottom" title="Buscar artículos activos" tabindex=1> Artículos activos</button></li>
+     	 				<li role="presentation" class="divider"></li>
+     	 				<li role="presentation"><button type="submit" class="btn btn-link" name="bt_buscar_pasivos" data-toggle="tooltip" data-placement="bottom" title="Buscar artículos pasivos" tabindex=2> Artículos pasivos</button></li>
+   					</ul>
+   				</li>
+     	 	</ul>
+		</div>
+<!-- Tabla de datos -->
+[opcion]
+[tabla]
+	</form>
+</div>

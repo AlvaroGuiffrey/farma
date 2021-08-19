@@ -1,0 +1,23 @@
+<div class="well">
+	<table class="table table-striped">
+	<caption title='Busca artículo a agregar a pendientes'>Opciones de búsqueda para agregar</caption>
+<!-- Título de las opciones de búsqueda -->
+		<thead><tr>
+			<td title='Cantidad de artículos a agregar'> Artículos </td>
+			<td title='Código del artículo a agregar'> Código </td>
+			<td title='Código de barra del artículo a agregar'> Código Barra </td>
+			<td title='Nombre del artículo a agregar'> Nombre </td>
+			<td></td>
+		</tr></thead>
+<!-- Opciones de busqueda -->
+		<tbody><tr>
+			<td title="Seleccione el artículo para asignar pendientes"><span class="badge">{cantidadArticulos}</span></td>
+			<td><input pattern="[0-9]{7,}" type="number" class="form-control" id="codigo" name="codigo" maxlength=8 placeholder="del artículo" title="Ingrese el código del artículo" tabindex=13></td>
+			<td><input type="text" class="form-control" id="codigoBarra" name="codigoBarra" onkeypress="return pulsar(event)" maxlength=15 placeholder="del artículo" title="Ingrese el código de barra del artículo" tabindex=11 autofocus></td>
+			<td><input type="text" class="form-control" id="nombre" name="nombre" value=" " size=30 maxlength=30 placeholder="del artículo" title="Ingrese nombre del artículo" tabindex=14></td>
+			<td></td>
+		</tr></tbody>
+	</table>
+	<button type="submit" class="btn btn-primary" name="bt_agregar_b" data-toggle="tooltip" data-placement="bottom" title="Botón confirmar opciones" tabindex=12> 
+ 		<span class="glyphicon glyphicon-check" aria-hidden="true"></span> Confirmar</button>
+</div>

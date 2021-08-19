@@ -1,0 +1,25 @@
+<div class="well">
+	<table class="table table-striped">
+	<caption>Artículo del Renglón</caption>
+<!-- Título de las opciones de agregar a renglón -->
+		<thead><tr>
+			<td title='Nombre del artículo a buscar'> Nombre </td>
+			<td title='Código del artículo a buscar'> Código </td>
+			<td title='Código del artículo a buscar asignado por la marca'> Código Marca </td>
+			<td></td>
+		</tr></thead>
+<!-- Opciones de agregar a renglón -->
+		<tbody><tr>
+			<!-- <td><input type="text" name="name" onKeyUp="getScriptPage('box','text_content','articulos')" id="text_content" size="40" autocomplete="off"/></td> -->
+			<td><input type="text" class="form-control" onKeyUp="getScriptPage('box','text_content','articulos')" id="text_content" name="nombre" size=30 maxlength=30 placeholder="del artículo" title="Ingrese parte del nombre del artículo" tabindex=11 autocomplete="off"></td>
+			<td><input pattern="[0-9]{7,}" type="number" class="form-control" id="codigo" name="codigo" maxlength=8 placeholder="del artículo" title="Ingrese el código del artículo" tabindex=12></td>
+			<td><input type="number" class="form-control" id="codigoMarca" name="codigoMarca"  maxlength=15 placeholder="del artículo" title="Ingrese el código del artículo asignado por la marca" tabindex=13></td>
+			<td></td>
+		</tr></tbody>
+	</table>
+<!-- Despliega los nombres del artículo -->
+	<div id="box"></div>
+<!--  -->
+	<button type="submit" class="btn btn-primary" name="bt_buscar_conf" data-toggle="tooltip" data-placement="bottom" title="Botón confirmar opciones" tabindex=10> 
+ 		<span class="glyphicon glyphicon-check" aria-hidden="true"></span> Confirmar</button>
+</div>

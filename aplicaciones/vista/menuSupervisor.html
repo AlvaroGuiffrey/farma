@@ -1,0 +1,55 @@
+<!-- Wrap all page content here -->
+<div id="wrap">
+  
+  <!-- Fixed navbar -->
+  <div class="navbar navbar-default">
+    <div class="container">
+      <div class="navbar-header" title="Menú para seleccionar tablas y tareas">
+         <a class="navbar-brand" href="#">Menú</a>
+      </div>
+      <p class="navbar-text navbar-right" title="Usuario activo"><font size=1 color="grey">Usuario: {usuario}</font></p>
+      <div class="collapse navbar-collapse">
+        <ul class="nav nav-tabs">
+          <li class="active" title="Cambia el usuario activo"><a href="/caro/index.php">Inicio</a></li>
+          <li class="dropdown" title="Tablas y tareas para mantener inventario">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Inventario <b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              <li class="dropdown-header">Tablas</li>
+              <li title="Rubros del inventario"><a href="{hrefRubros}">Rubros</a></li>
+              <li title="Marcas del inventario"><a href="{hrefMarcas}">Marcas</a></li>
+              <li title="Artículos del inventario"><a href="{hrefArticulos}">Artículos</a></li>
+              <li title="Partidas de los artículos"><a href="{hrefPartidas}">Partidas</a></li>
+              <li class="divider"></li>
+              <li class="dropdown-header">Tareas</li>
+              <li><a href="#"></a></li>
+            </ul>
+            <li class="dropdown" title="Tablas y tareas para compras">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Compras <b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              <li class="dropdown-header">Tablas</li>
+              <li title="Datos cuentas de proveedores"><a href="#">Cuentas Prov.</a></li>
+              <li title="Datos IVA por compras"><a href="#">IVA Compras</a></li>
+              <li class="divider"></li>
+              <li class="dropdown-header">Tareas</li>
+              <li title="Ingreso comprabantes de compras"><a href="{hrefIngresoCompras}">Ingreso Compras</a></li>
+            </ul>
+          </li>
+          <li class="dropdown" title="Tablas y tareas para ventas">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Ventas <b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              <li class="dropdown-header">Tablas</li>
+              <li title="Datos cuentas de clientes"><a href="#">Cuentas Ctes.</a></li>
+              <li title="Datos tarjetas deb.y creditos"><a href="#">Tarjetas</a></li>
+              <li title="Datos IVA por ventas"><a href="#">IVA Ventas</a></li>
+              <li class="divider"></li>
+              <li class="dropdown-header">Tareas</li>
+              <li title="Emisión pedidos de clientes"><a href="#">Pedidos</a></li>
+              <li title="Tareas varias de caja"><a href="#">Caja</a></li>
+            </ul>
+          </li>  
+        </ul>
+      </div><!--/.nav-collapse -->
+      
+    </div>
+  </div>
+</div><!-- /wrap -->

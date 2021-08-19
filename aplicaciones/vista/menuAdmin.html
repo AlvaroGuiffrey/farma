@@ -1,0 +1,106 @@
+<!-- Wrap all page content here -->
+<div id="wrap">
+
+  <!-- Fixed navbar -->
+  <div class="navbar navbar-default">
+
+      <div class="navbar-header" title="Menú para seleccionar tablas y tareas">
+         <a class="navbar-brand" href="#">Menú</a>
+      </div>
+      <p class="navbar-text navbar-right" title="Usuario activo"><font size=1 color="grey">Usuario: {usuario}</font></p>
+      <div class="collapse navbar-collapse">
+        <ul class="nav nav-tabs">
+          <li class="active" title="Cambia el usuario activo"><a href="{hrefInicio}">Inicio</a></li>
+          <li class="dropdown" title="Tablas y tareas para mantener inventario">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Inventario <b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              <li class="dropdown-header">Tablas</li>
+              <li title="Rubros del inventario"><a href="{hrefRubros}">Rubros</a></li>
+              <li title="Marcas del inventario"><a href="{hrefMarcas}">Marcas</a></li>
+              <li title="Artículos del inventario"><a href="{hrefArticulos}">Artículos</a></li>
+              <li title="Partidas de los artículos"><a href="{hrefPartidas}">Partidas</a></li>
+              <li class="divider"></li>
+              <li class="dropdown-header">Tareas</li>
+              <li title="Actualiza los precios de los artículos con listas de los proveedores"><a href="{hrefActualizaArticulos}">Actualiza precios c/Prov.</a></li>
+              <li title="Prueba actualizar los precios de los artículos con listas de los proveedores"><a href="{hrefActualizaArtPrueba}">Prueba actualizar precios c/Prov.</a></li>
+              <li title="Actualiza los precios de los artículos con PRECIOS UNICOS"><a href="{hrefActualizaArticulosPU}">Actualiza -Precios Unicos-</a></li>
+              <li title="Agrega, lista y descarga los rótulos de los precios de los artículos"><a href="{hrefRotulos}">Rótulos de artículos</a></li>
+              <li title="Descarta artículos de baja en productos PLEX"><a href="{hrefDescartaArticulos}">Descarta artículos</a></li>
+              <li title="Agrega, lista y descarga artículos con condiciones de venta"><a href="{hrefArticulosCondi}">Artículos c/Condiciones</a></li>
+              <li title="Realiza Backup de las Tablas"><a href="{hrefBackupTablasI}">Backup Tablas</a></li>
+              <li><a href="#"></a></li>
+            </ul>
+            <li class="dropdown" title="Tablas y tareas para compras">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Compras <b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              <li class="dropdown-header">Tablas</li>
+              <li title="Datos cuentas de proveedores"><a href="{hrefProveedores}">Proveedores</a></li>
+              <li title="Datos de productos de los proveedores"><a href="{hrefProductos}">Productos</a></li>
+              <li title="Datos IVA por compras"><a href="#">IVA Compras</a></li>
+              <li class="divider"></li>
+              <li class="dropdown-header">Tareas</li>
+              <li title="Asigna artículos pendientes para pedido"><a href="{hrefAsignaPendientes}">Pendientes p/Pedido</a></li>
+              <li title="Realiza pedidos de productos"><a href="{hrefPedidos}">Pedidos a Proveedores</a></li>
+              <li title="Realiza reposiciones de artículos"><a href="{hrefReposiciones}">Reposiciones de Artículos</a></li>
+              <li title="Ingreso comprabantes de compras"><a href="{hrefIngresoCompras}">Ingreso Compras</a></li>
+              <li title="Lista Precio menor por Proveedor"><a href="{hrefPrecioMenorProv}">Precio menor p/Prov.</a></li>
+              <li class="divider"></li>
+              <li title="Actualiza lista de productos"><a href="{hrefActualizaDS}">Actualiza Drog.Del Sud</a></li>
+              <li title="Actualiza lista de productos"><a href="{hrefActualizaKE}">Actualiza Drog.Kellerhoff</a></li>
+              <li title="Actualiza lista de productos"><a href="{hrefActualizaLI}">Actualiza Coop.Litoral</a></li>
+              <li title="Actualiza lista de productos"><a href="{hrefActualizaNI}">Actualiza Nippon</a></li>
+              <li title="Actualiza lista de productos"><a href="{hrefActualizaDI}">Actualiza Dispita</a></li>
+              <li title="Actualiza lista de productos"><a href="{hrefActualizaBA}">Actualiza Babelito</a></li>
+              <li title="Actualiza lista de productos"><a href="{hrefActualizaCF}">Actualiza Casa Florian</a></li>
+            </ul>
+          </li>
+          <li class="dropdown" title="Tablas y tareas para ventas">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Ventas <b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              <li class="dropdown-header">Tablas</li>
+              <li title="Consulta artículos c/condiciones de venta"><a href="{hrefArticulosCondiBuscar}">Consulta Condiciones Art.</a></li>
+              <li title="Datos cuentas de clientes"><a href="#">Cuentas Ctes.</a></li>
+              <li title="Datos tarjetas deb.y creditos"><a href="#">Tarjetas</a></li>
+              <li title="Datos IVA por ventas"><a href="#">IVA Ventas</a></li>
+              <li class="divider"></li>
+              <li class="dropdown-header">Tareas</li>
+              <li title="Emisión pedidos de clientes"><a href="#">Pedidos</a></li>
+              <li title="Tareas varias de caja"><a href="#">Caja</a></li>
+            </ul>
+          </li>
+    	  <li class="dropdown" title="Otras tablas y tareas varias">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Otras <b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              <li class="dropdown-header">Tablas</li>
+              <li title="Datos de localidades"><a href="{hrefLocalidades}">Localidades</a></li>
+              <li class="divider"></li>
+              <li class="dropdown-header">Tareas</li>
+              <li title=""><a href="#"> </a></li>
+            </ul>
+          </li>
+          <li class="dropdown" title="Tablas y tareas en la DB PLEX">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">DB Plex <b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              <li class="dropdown-header">Tablas</li>
+              <li title="Tabla de laboratorios"><a href="{hrefPlexLaboratorios}">Laboratorios</a></li>
+              <li title="Tabla de productos"><a href="{hrefPlexProductos}">Productos</a></li>
+              <li class="divider"></li>
+              <li class="dropdown-header">Tareas</li>
+              <li title="Tabla de facturas, actualiza para reposición"><a href="{hrefPlexFacturas}">Act.Fact.p/reposición</a></li>
+             </ul>
+          </li>
+          <li class="dropdown" title="Tabla y tareas para usuarios">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Usuarios <b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              <li class="dropdown-header">Tablas</li>
+              <li title="Datos cuentas de clientes"><a href="#">Usuarios</a></li>
+              <li class="divider"></li>
+              <li class="dropdown-header">Tareas</li>
+             </ul>
+          </li>
+        </ul>
+      </div><!--/.nav-collapse -->
+
+
+  </div>
+</div><!-- /wrap -->

@@ -1,0 +1,20 @@
+<!-- Datos a editar del módulo localidad -->
+<div class="jumbotron">
+	<table>
+		<caption>Datos de la localidad</caption>
+		<tbody>
+		<tr><td title="Identificador de la localidad"><label>#</label></td><td style="width:20px">:</td>
+			<td><input type="hidden" name="id" value="{id}"> {id} </td></tr>
+		<tr><td title="Nombre de la localidad"><label>Nombre</label></td><td>:</td>
+			<td><input type="text" class="form-control" id="nombre" name="nombre" value="{nombre}" title="Ingrese el nombre de la localidad" tabindex=2 autofocus></td></tr>
+		<tr><td title="Código postal de la localidad"><label>Cód.Postal</label></td><td>:</td>
+			<td><input type="number" class="form-control" id="codPostal" name="codPostal" value="{codPostal}" title="Ingrese el código postal de la localidad" tabindex=3></td></tr>
+		<tr><td title="Departamento/Partido de la localidad"><label>Dep./Part.</label></td><td>:</td>
+			<td><input type="text" class="form-control" id="departamento" name="departamento" value="{departamento}" title="Ingrese el departamento/partido de la localidad" tabindex=4></td></tr>
+		<tr><td title="Provincia de la localidad"><label>Provincia</label></td><td>:</td><td> {nombreProvincia} </td></tr>
+		</tbody>
+		<tfoot></tfoot>
+	</table>  
+	<input type="hidden" name="provincia" value="{provincia}">
+	<input type="hidden" name="nombreProvincia" value="{nombreProvincia}">
+</div>

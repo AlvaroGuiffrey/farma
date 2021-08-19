@@ -1,0 +1,42 @@
+<div class="well">
+	<table class="table table-striped">
+	<caption>Artículo del Renglón</caption>
+<!-- Título de agregar a renglón -->
+		<thead><tr>
+			<th title='Código del artículo a agregar'> Código </th>
+			<th title='Datos del artículo a agregar'> Datos del Artículo </th>
+			<th title='Cantidad de unidades del artículo a agregar'> Cantidad </th>
+			<th title='Costo unitario del artículo a agregar'> Costo </th>
+			<th></th>
+		</tr></thead>
+<!-- Datos agregar a renglón -->
+		<tbody>
+	<!-- Primer renglon de datos -->		
+		<tr>
+			<td>{codigo}</td>			
+			<td>{nombreArticulo}</td>
+			<td><input pattern="[0-9]" type="number" class="form-control" id="cantidadUn" name="cantidadUn" maxlength=6 placeholder="Un." title="Ingrese la cantidad de unidades del artículo" autocomplete="off" tabindex=1></td>
+			<td><input pattern="[0-9]{8,2}" type="number" class="form-control" id="costo" name="costo" maxlength=11 placeholder="del artículo" title="Ingrese el costo unitario del artículo" autocomplete="off" tabindex=2></td>
+			<td></td>
+		</tr>
+	<!-- Segundo renglon de datos -->
+		<tr>
+			<td>Marca:</td><td>{nombreMarca}</td><td>({nombreRubro})</td><td></td><td></td>
+		</tr>
+
+<!-- Final datos agregar a renglón -->		
+		</tbody>
+	</table>
+
+<!--  -->
+	<input type="hidden" name="idArticulo" value="{idArticulo}">
+	<button type="submit" class="btn btn-primary" name="bt_agregar_conf" data-toggle="tooltip" data-placement="bottom" title="Botón confirmar datos" tabindex=10> 
+ 		<span class="glyphicon glyphicon-check" aria-hidden="true"></span> Confirmar</button>
+<!-- Botón reset -->
+	<button type="reset" class="btn btn-default" name="bt_borrar" data-toggle="tooltip" data-placement="bottom" title="Botón para borrar datos" tabindex=55> 
+ 	<span class="glyphicon glyphicon-erase" aria-hidden="true"></span> Borrar</button>
+<!-- Botón para agregar -->
+	<button type="submit" class="btn btn-success" name="bt_agregar_otro" data-toggle="tooltip" data-placement="bottom" title="Botón para agregar otro" tabindex=56>
+    <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span> Agregar Otro</button> 
+  			 
+</div>

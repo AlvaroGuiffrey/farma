@@ -1,0 +1,27 @@
+<div class="well">
+	<table class="table table-striped">
+	<h4>
+		Condición: <span class="label label-default">{nombreCondi}</span> - Hasta: <span class="label label-default">{fechaHasta}</span>
+	</h4>
+	<caption>Opciones de búsqueda</caption>
+<!-- Título de las opciones de búsqueda -->
+		<thead><tr>
+			<td title='Código del artículo a buscar'> Código Plex</td>
+			<td title='Código de barra del artículo a buscar'> Código Barra </td>
+			<td title='Nombre del artículo a buscar'> Código Prov. </td>
+			<td></td>
+		</tr></thead>
+<!-- Opciones de busqueda -->
+		<tbody><tr>
+			<td><input pattern="[0-9]{7,}" type="number" class="form-control" id="codigo" name="codigo" maxlength=8 placeholder="del artículo" title="Ingrese el código PLEX del artículo" tabindex=13></td>
+			<td><input type="text" class="form-control" id="codigoBarra" name="codigoBarra" onkeypress="return pulsar(event)" maxlength=15 placeholder="del artículo" title="Ingrese el código de barra del artículo" tabindex=11 autofocus></td>
+			<td><input type="text" class="form-control" id="codigoProv" name="codigoProv" value=" " size=19 maxlength=19 placeholder="del artículo" title="Ingrese código asignado p/proveedor. Para Del Sud agregue + adelante" tabindex=12></td>
+			<td></td>
+		</tr></tbody>
+	</table>
+	<input type="hidden" name="condicion" value="{idCondi}">
+	<input type="hidden" name="fechaHasta" value="{fechaHasta}">
+	
+	<button type="submit" class="btn btn-primary" name="bt_buscar_articulo_conf" data-toggle="tooltip" data-placement="bottom" title="Botón confirmar opciones" tabindex=14> 
+ 		<span class="glyphicon glyphicon-check" aria-hidden="true"></span> Confirmar</button>
+</div>

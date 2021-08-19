@@ -1,0 +1,19 @@
+<div class="well">
+	<table class="table table-striped">
+	<caption>Opciones de búsqueda</caption>
+<!-- Título de las opciones de búsqueda -->
+		<thead><tr>
+			<td title='Código del artículo a buscar'> Código </td>
+			<td title='Código de barra del artículo a buscar'> Código Barra </td>
+			<td></td>
+		</tr></thead>
+<!-- Opciones de busqueda -->
+		<tbody><tr>
+			<td><input pattern="[0-9]{7,}" type="number" class="form-control" id="codigo" name="codigo" maxlength=8 placeholder="del artículo" title="Ingrese el código del artículo" tabindex=11></td>
+			<td><input type="text" class="form-control" id="codigoBarra" name="codigoBarra" onkeypress="return pulsar(event)" maxlength=15 placeholder="del artículo" title="Ingrese el código de barra del artículo" tabindex=12 autofocus></td>
+			<td></td>
+		</tr></tbody>
+	</table>
+	<button type="submit" class="btn btn-primary" name="bt_buscar_conf" data-toggle="tooltip" data-placement="bottom" title="Botón confirmar opciones" tabindex=13> 
+ 		<span class="glyphicon glyphicon-check" aria-hidden="true"></span> Confirmar</button>
+</div>

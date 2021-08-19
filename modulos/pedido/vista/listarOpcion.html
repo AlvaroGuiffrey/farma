@@ -1,0 +1,40 @@
+<div class="well">
+	<table class="table table-striped">
+	<caption>Opciones del listado</caption>
+<!-- Título de las opciones de listados -->
+		<thead><tr>
+			<td title='Total de proveedores'><span class="badge">{cantidadProveedor}</span> Proveedores </td>
+			<td title='Fechas de los pedidos realizados'> Fechas: </td>
+			<td></td>
+			<td></td>
+		</tr></thead>
+<!-- Opciones de listados -->
+		<tbody><tr>
+			<td title='Seleccione el proveedor a listar'>[selectProveedor]</td>
+			<td title='Seleccione las fechas a listar'>
+				    <div class="input-daterange input-group" id="datepicker">
+				    	<span class="input-group-addon">Desde</span>
+   						<input type="text" class="form-control" name="fechaDesde" placeholder="AAAA-MM-DD" title='Seleccione la fecha desde cuando listar' tabindex=2/>
+    					<span class="input-group-addon">hasta</span>
+    					<input type="text" class="form-control" name="fechaHasta" placeholder="AAAA-MM-DD" title='Seleccione la fecha hasta cuando listar' tabindex=3/>
+    				</div> 
+			</td>
+			<td></td>
+			<td></td>
+		</tr></tbody>
+	</table>
+	
+</div>
+<script >
+$('#datepicker').datepicker({
+    format: "yyyy-mm-dd",
+    firstDay: 0,
+    endDate: "+0",
+    todayBtn: "linked",
+    clearBtn: true,
+    language: "es",
+    orientation: "top auto",
+    autoclose: true,
+    todayHighlight: true
+    });
+</script>

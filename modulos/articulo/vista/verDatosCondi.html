@@ -1,0 +1,34 @@
+<div>	
+	<h4>Condición: <span class="label label-default">{nombreCondi}</span> - Hasta: <span class="label label-default">{fechaHasta}</span> - Rótulo: <input type="checkbox" name="rotulo" value=3 {chkRotulo}><i class="glyphicon glyphicon-file"></i></h4>
+</div>
+
+	<table style="font-size: 10pt">
+		<caption>Datos del Artículo</caption>
+		<tr><td title="Código del Artículo"><label>Código</label></td><td style="width:30px">:</td><td> {codigo} </td></tr>
+		<tr><td title="Código de barra del artículo"><label>Código Barra</label></td><td>:</td><td> {codigoBarra} </td></tr>
+		<tr><td title="Nombre del artículo"><label>Nombre</label></td><td>:</td><td> {nombre} </td></tr>
+		<tr><td title="Presentación del artículo"><label>Presentación</label></td><td>:</td><td> {presentacion} </td></tr>
+		<tr><td title="Precio del artículo"><label>Precio Góndola</label></td><td>: $</td><td> {precio} </td></tr>
+		<tr><td title="Fecha del precio del artículo"><label>Fecha Precio</label></td><td>:</td><td> {fechaPrecio} </td></tr>
+		<tr><td title="Precio unitario del artículo según condición" style="background-color:rgba(255, 255, 0, 1.0);"><label>Precio s/Condición</label></td><td style="width:30px; background-color:rgba(255, 255, 0, 1.0);">: $</td><td style="background-color:rgba(255, 255, 0, 1.0);"> {precioCondi} </td></tr>
+		<tr><td title="Diferencia del precio s/condición con el precio de góndola"><label>Dif. c/Precio Góndola</label></td><td>: $</td><td> {precioDif} </td></tr>
+	</table>
+	<table style="font-size: 10pt">
+		<caption>Datos de la Venta</caption>
+		<tr><td title="Cantidad de unidades mínimas del Artículo según condición"><label>Unidades Mínimas</label></td><td style="width:30px">:</td><td> {unidadCondi} </td></tr>
+		<tr><td title="Importe total segón condición del Artículo"><label>Importe Total</label></td><td>: $</td><td> {importeTotal} </td></tr>
+		<tr><td title="Ahorro según condición del Artículo" style="background-color:rgba(255, 255, 0, 1.0);"><label>Ahorro Total</label></td><td style="background-color:rgba(255, 255, 0, 1.0);">: $</td><td style="background-color:rgba(255, 255, 0, 1.0);"> {ahorro} </td></tr>
+	</table>
+	<table style="font-size: 10pt">
+		<caption>Datos de Cuotas</caption>
+		<tr><td title="Cantidad de cuotas según condición"><label>Cuotas</label></td><td style="width:30px">:</td><td style="width:50px"> {cuotaCondi} </td> <td> (con Tarjetas de Crédito)</td></tr>
+		<tr><td title="Importe de las cuotas según condición del Artículo"><label>Importe Cuota</label></td><td>: $</td><td> {importeCuota} </td><td></td></tr>
+		<tfoot></tfoot>
+	</table> 
+
+	<input type="hidden" name="id" value="{id}">
+	<input type="hidden" name="nombre" value="{nombre}">
+	<input type="hidden" name="condicion" value="{idCondi}">
+	<input type="hidden" name="nombreCondi" value="{nombreCondi}">
+	<input type="hidden" name="fechaHasta" value="{fechaHasta}">
+	

@@ -1,0 +1,17 @@
+eclipse.preferences.version=1
+encoding//aplicaciones/vista/menuAdmin.html=UTF-8
+encoding//includes/vista/botonVolver.html=UTF-8
+encoding//modulos/articulo/vista/actualizarPrecios.html=UTF-8
+encoding//modulos/articulo/vista/actualizarPreciosU.html=UTF-8
+encoding//modulos/articulo/vista/buscarArticuloCondi.html=UTF-8
+encoding//modulos/articulo/vista/buscarArticuloConsultaCondi.html=UTF-8
+encoding//modulos/articulo/vista/buscarCondicion.html=UTF-8
+encoding//modulos/articulo/vista/buscarOpcion.html=UTF-8
+encoding//modulos/articulo/vista/editarDatos.html=UTF-8
+encoding//modulos/articulo/vista/modificarPreciosU.html=UTF-8
+encoding//modulos/articulo/vista/verDatos.html=UTF-8
+encoding//modulos/articulo/vista/verDatosArticuloCondi.html=UTF-8
+encoding//modulos/articulo/vista/verDatosCondi.html=UTF-8
+encoding//modulos/rotulo/includes/OfertaRotulos.php=UTF-8
+encoding//modulos/rotulo/includes/RotuloCondiTabla.php=UTF-8
+encoding/<project>=UTF-8

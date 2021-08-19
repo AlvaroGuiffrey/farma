@@ -1,0 +1,21 @@
+<!-- Contenido de acción ver del módulo -->
+<div id="ver">
+	<form class="form-horizontal" role="form" action="" method="post">
+<!-- Selector de Acciones -->
+		<div>
+			<button class="btn btn-info" data-toggle="tooltip" data-placement="bottom" title="Total de la consulta">{tituloBadge} <span class="badge">{cantidad}</span></button>
+			<button type="submit" class="btn btn-success" name="bt_agregar" data-toggle="tooltip" data-placement="bottom" title="Botón para agregar" tabindex=1>
+     	 	<span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span> Agregar</button>
+     	 	<button type="submit" class="btn btn-default" name="bt_listar" data-toggle="tooltip" data-placement="bottom" title="Botón para listar" tabindex=2>
+     	 	<span class="glyphicon glyphicon-list" aria-hidden="true"></span> Listar</button>
+		</div>
+<!-- Muestra los datos -->
+<div class="jumbotron">
+[datos] 
+
+ 	<p><button type="submit" class="btn btn-primary" name="bt_editar" value="{id}" data-toggle="tooltip" data-placement="bottom" title="Botón para editar datos" tabindex=51> 
+ 	<span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Editar</button></p>
+</div>
+[tabla]
+	</form>
+</div>

@@ -1,0 +1,74 @@
+<div class="well">
+<!-- Tabla de las opciones de listados -->	
+	<table class="table table-striped">
+	<caption>Opciones del listado</caption>
+<!-- Título de las opciones (1) de listados -->
+		<thead><tr>
+			<td title='Marcas de los artículos a listar'><span class="badge">{cantidadMarca}</span> Marcas </td>
+			<td title='Rubros de los artículos a listar'><span class="badge">{cantidadRubro}</span> Rubros </td>
+			<td title='Estado de los artículos a listar'> Estado artículos: </td>
+			<td title='Ordenamiento del listado de artículos'> Ordenado por: </td>
+			<td></td>
+		</tr></thead>
+<!-- Opciones (1) de listados -->
+		<tbody><tr>
+			<td title='Seleccione la marca a listar'>[selectMarca]</td>
+			<td title='Seleccione el rubro a listar'>[selectRubro]</td>
+			<td title='Seleccione el estado de los artículos a listar'>
+				<label class="ckeckbox-inline">
+					<input type="radio" name="estado" value="1" checked> Activos - 
+				</label>	
+				<label class="ckeckbox-inline">	
+					<input type="radio" name="estado" value="0"> Pasivos 
+				</label>
+			</td>
+			<td title='Seleccione el orden del listado'>
+				<label class="ckeckbox-inline">
+					<input type="radio" name="orden" value="nombre" checked title="ordena el listado alfabéticamente por el nombre"> Nombre - 
+				</label>	
+				<label class="ckeckbox-inline">	
+					<input type="radio" name="orden" value="codigo"> Código 
+				</label>
+			</td>
+			<td>			</td>
+		</tr></tbody>
+		
+<!-- Título de las opciones (2) de listados -->
+		<thead><tr>
+			<td title='Origen de los datos de los artículos a listar'> Origen Datos</td>
+			<td title='Proveedor de los artículos a listar se actualiza por'> Proveedor se actualiza por:</td>
+			<td></td>
+		</tr></thead>
+<!-- Opciones de (2) listados -->
+		<tbody><tr>
+			<td title='Seleccione el origen de los datos de los artículos a listar'>
+				<label class="ckeckbox-inline" >
+					<input type="radio" name="origen" value="0" checked> Todos - 
+				</label>	
+				<label class="ckeckbox-inline">	
+					<input type="radio" name="origen" value="1"> PLEX - 
+				</label>
+				<label class="ckeckbox-inline">	
+					<input type="radio" name="origen" value="2"> Propio 
+				</label>
+			</td>
+			<td title='Seleccione como se actualiza el proveedor'>
+				<label class="ckeckbox-inline">	
+					<input type="radio" name="actualizaProv" value=1> Artículo - 
+				</label>
+				<label class="ckeckbox-inline">	
+					<input type="radio" name="actualizaProv" value=2> Actualización -
+				</label>
+				<label class="ckeckbox-inline">
+					<input type="radio" name="actualizaProv" value="0"> Sin Opción - 
+				</label>
+				<label class="ckeckbox-inline">
+					<input type="radio" name="actualizaProv" value="9" checked> Todos 
+				</label>
+			</td>
+			<td>			</td>
+			<td>			</td>
+		</tr></tbody>
+<!-- Fin tabla de las opciones de listados -->		
+	</table>
+</div>

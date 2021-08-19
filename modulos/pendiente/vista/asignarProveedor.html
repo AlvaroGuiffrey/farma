@@ -1,0 +1,21 @@
+<!-- Datos del proveedor para asignar en ventana del módulo pendiente -->
+	<table>
+		<caption>Datos del Proveedor para asignar</caption>
+
+		<tr><td title="Seleccione el proveedor para asignar pendientes"><label>Proveedor <span class="badge">{cantidadProveedor}</span></label></td><td>:</td>
+			<td>[selectProveedor]</td></tr>
+		<tfoot>		</tfoot>
+	</table>
+	<hr>
+	<table>
+		<caption>Seleccione rubros </caption>
+		
+		<tr><td title="Seleccione los rubros para asignar pendientes"><label>Rubros </label></td><td style="width:30px">:</td>
+		    <td style="width:140px"><input type="checkbox" name="rubro[]" id="rubro1" value="{Rubro1Id}" checked> {Rubro1Nombre} </td>
+		    <td style="width:140px"><input type="checkbox" name="rubro[]" id="rubro2" value="{Rubro2Id}" checked> {Rubro2Nombre} </td>
+		    <td style="width:140px"><input type="checkbox" name="rubro[]" id="rubro3" value="{Rubro3Id}" checked> {Rubro3Nombre} </td>
+		    <td style="width:140px"><input type="checkbox" name="rubro[]" id="rubro4" value="{Rubro4Id}" checked> {Rubro4Nombre} </td>
+		</tr>    
+	</table>
+	<hr>
+	<input type="hidden" name="cantidad" value="{cantidad}">

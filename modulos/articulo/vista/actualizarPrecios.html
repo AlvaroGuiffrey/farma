@@ -1,0 +1,116 @@
+<!-- Datos de rangos de aumentos para seleccionar del módulo artículo -->
+<table>
+	<caption>Seleccione rangos de aumentos a aplicar</caption>
+
+		<tr><td title="Seleccione rangos para aumento de precios"><label>Rangos </label></td><td style="width:25px">:</td>
+		    <td style="width:90px"><input type="checkbox" name="rangos[r1]" id="rango1" value="r-5" checked> - ó =5% </td>
+		    <td style="width:70px"><input type="checkbox" name="rangos[r2]" id="rango2" value="r+5" checked> +5% </td>
+		    <td style="width:70px"><input type="checkbox" name="rangos[r3]" id="rango3" value="r+10" checked> +10% </td>
+		    <td style="width:70px"><input type="checkbox" name="rangos[r4]" id="rango4" value="r+20" checked> +20% </td>
+		    <td style="width:70px"><input type="checkbox" name="rangos[r5]" id="rango5" value="r+30" checked> +30% </td>
+		    <td style="width:70px"><input type="checkbox" name="rangos[r6]" id="rango6" value="r-0" checked>
+		    	<b style='color:green;'> Bajas </b>
+		    </td>
+		</tr>
+</table>
+
+<!-- Totales de los artículos actualizados y rótulos para imprimir -->
+<div class="jumbotron">
+	{evento}
+	<table>
+		<caption>Datos de registros</caption>
+		<tr>
+			<td title="Total de registros actualizables en artículos"><label>Registros actualizables</label></td>
+			<td>:</td>
+			<td style="width:50px; text-align:right;"> {cantActualizables} </td>
+		</tr>
+		<tr>
+			<td title="Registros actualizados en artículos"><label>Registros actualizados</label></td>
+			<td>:</td>
+			<td style="width:50px; text-align:right; color:red;"> {cantActualizados} </td>
+		</tr>
+	</table>
+	<hr>
+	<table>
+		<tr>
+			<td title="Total de registros actualizados con aumento de precio"><label>Registros con aumento de precio</label></td>
+			<td>:</td>
+			<td style="width:50px; text-align:right;" > {cantAumentos} </td>
+			<td style="width:20px;"></td>
+			<td colspan="4" style="color:grey;">Aumentos por Rangos</td>
+		</tr>
+		<tr>
+			<td title="Total de registros actualizados con baja de precio"><label>Registros con baja de precio</label></td>
+			<td>:</td>
+			<td style="width:50px; text-align:right; color:green;"> {cantBajas} </td>
+			<td style="width:20px;"> {img6} </td>
+			<td><label>Más de 30%</label></td>
+			<td>:</td>
+			<td style="width:50px; text-align:right;" > {masTreinta} </td>
+			<td style="width:30px;"> {img5} </td>
+		</tr>
+		<tr>
+			<td title="Total de registros no actualizados por precio igual"><label>Registros sin modif. precio</label></td>
+			<td>:</td>
+			<td style="width:50px; text-align:right;"> {cantNoActualiza} </td>
+			<td style="width:20px;"></td>
+			<td><label>Más de 20%</label></td>
+			<td>:</td>
+			<td style="width:50px; text-align:right;" > {masVeinte} </td>
+			<td style="width:30px;"> {img4} </td>
+		</tr>
+		<tr>
+			<td title="Total de registros sin proveedor de referencia"><label>Registros sin Proveedor de Ref.</label></td>
+			<td>:</td>
+			<td style="width:50px; text-align:right;"> {cantNoLeidos} </td>
+			<td style="width:20px;"></td>
+			<td><label>Más de 10%</label></td>
+			<td>:</td>
+			<td style="width:50px; text-align:right;" > {masDiez} </td>
+			<td style="width:30px;"> {img3} </td>
+		</tr>
+		<tr>
+			<td title="Total de registros en PROMO (no actualiza)"><label>Registros con PR. en nombre</label></td>
+			<td>:</td>
+			<td style="width:50px; text-align:right;"> {cantPromo} </td>
+			<td style="width:20px;"></td>
+			<td><label>Más de 5%</label></td>
+			<td>:</td>
+			<td style="width:50px; text-align:right;" > {masCinco} </td>
+			<td style="width:30px;"> {img2} </td>
+		</tr>
+		<tr>
+			<td title="Total de registros con precios unificados"><label>Registros con PU. en nombre</label></td>
+			<td>:</td>
+			<td style="width:50px; text-align:right;"> {cantPrecioUnificado} </td>
+			<td style="width:20px;"></td>
+			<td><label>Menos ó 5%</label></td>
+			<td>:</td>
+			<td style="width:50px; text-align:right;" > {menosCinco} </td>
+			<td style="width:30px;"> {img1} </td>
+		</tr>
+	</table>
+	<hr>
+	<table>
+		<tr>
+			<td title="Total de rótulos de precios para imprimir"><label>Rótulos de precios para imprimir</label></td>
+			<td>:</td>
+			<td style="width:50px; text-align:right; color:red;"> {cantImprimeRotulo} </td>
+		</tr>
+		<tr>
+			<td title="Total de rótulos de ofertas y promo para imprimir"><label>Rótulos de of/promo para imprimir</label></td>
+			<td>:</td>
+			<td style="width:50px; text-align:right; color:red;"> {cantImprimeRotuloPromo} </td>
+		</tr>
+	</table>
+	<hr>
+	<table>
+		<tr>
+			<td title="Total de artículos inexistentes PLEX"><label>Artículos inexistentes en PLEX</label></td>
+			<td>:</td>
+			<td style="width:50px; text-align:right; color:red;"> {cantInexistentesPlex} </td>
+		</tr>
+	</table>
+	<input type="hidden" name="cantidad" value="{cantidad}">
+	<input type="hidden" name="cantActualizables" value="{cantActualizables}">
+</div>

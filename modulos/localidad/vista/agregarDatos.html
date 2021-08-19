@@ -1,0 +1,16 @@
+<!-- Datos para agregar del módulo localidad -->
+<div class="jumbotron">
+	<table>
+		<caption>Datos de la localidad</caption>
+		<tr><td title="Nombre de la localidad"><label>Nombre</label></td><td  style="width:20px">:</td>
+			<td><input type="text" class="form-control" id="nombre" name="nombre" size=30 maxlength=30 placeholder="de la localidad" title="Ingrese el nombre de la localidad" tabindex=2 autofocus></td></tr>
+		<tr><td title="Código postal de la localidad"><label>Cód.Postal</label></td><td>:</td>
+			<td><input type="number" class="form-control" id="codPostal" name="codPostal" size=15 maxlength=4 placeholder="de la localidad" title="Ingrese el código postal de la localidad" tabindex=3></td></tr>
+		<tr><td title="Departamento/Partido de la localidad"><label>Dep./Part.</label></td><td>:</td>
+			<td><input type="text" class="form-control" id="departamento" name="departamento" size=20 maxlength=20 placeholder="de la localidad" title="Ingrese el departamento/partido de la localidad" tabindex=4></td></tr>
+		<tr><td title="Provincia de la localidad"><label>Provincia</label></td><td>:</td><td> {nombreProvincia} </td></tr>
+		<tfoot></tfoot>
+	</table>  
+	<input type="hidden" name="provincia" value="{provincia}">
+	<input type="hidden" name="nombreProvincia" value="{nombreProvincia}">
+</div>

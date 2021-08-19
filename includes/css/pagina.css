@@ -1,0 +1,29 @@
+@media (max-width: 767px){
+.container{
+	position: relative; 
+	width: 100%;
+}
+}
+
+@media (max-width: 991px) and (min-width:  767px) {
+.container{
+	position: relative; 
+	width: 95%; 
+}
+}
+
+@media (max-width: 1199px) and (min-width:  992px) {
+.container{
+	position: relative; 
+	width: 95%; 
+}
+}
+
+@media (min-width: 1200px) {
+.container{
+	position: relative; 
+	width: 70%; 
+}
+}
+
+

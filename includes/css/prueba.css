@@ -1,0 +1,57 @@
+*{
+    margin: 0px;
+}
+
+body {
+	margin-left: 100px;
+	margin-rigth: 100px;
+}
+
+@media (max-width: 767px){
+    #colordeprueba{
+        color: #000080;
+    }
+    #floatscreen{
+    height: 30px;
+    width: 100px;
+    color: blue;  
+    }
+}
+
+@media (max-width: 991px) and (min-width:  767px) {
+    #colordeprueba{
+        color:  red
+    }
+    #floatscreen{
+    height: 30px;
+    width: 100px;
+    color: green;  
+    }
+}
+
+@media (max-width: 1199px) and (min-width:  992px) {
+    #colordeprueba{
+
+    	height: 100px;
+    	width: 200px;
+        color: #0C0;
+    }
+    #floatscreen{
+ 	float: rigth;
+    height: 30px;
+    width: 100px;
+ 
+    color: red;  
+    }
+}
+ 
+@media (min-width: 1200px) {
+    #colordeprueba{
+        color:  #c67605
+    }
+    #floatscreen{
+    height: 30px;
+    width: 100px;
+    color: orangered;  
+    }
+}

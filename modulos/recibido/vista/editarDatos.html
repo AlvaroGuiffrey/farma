@@ -1,0 +1,39 @@
+<!-- Datos a editar en ventana del módulo recibido -->
+	<table>
+		<caption>Datos del Comprobante Recibido</caption>
+		
+		<tr><td title="Comprobante recibido"><label>Comprobante</label></td><td style="width:30px">:</td>
+			<td><input type="number" class="form-control" id="comprobante" name="comprobante" value="{comprobante}" maxlength=18 placeholder="(XX X-0000-00000000)" title="Ingrese el número del comprobante" tabindex=2 autofocus></td></tr>
+		<tr><td title="Fecha del comprobante recibido"><label>Fecha </label></td><td>:</td>
+			<td><input type="date" class="form-control" id="datepicker" name="fecha" value="{fecha}" maxlength=10 placeholder="(AAAA-MM-DD)" title="Ingrese la fecha del comprobante" tabindex=3></td></tr>
+		<tr><td title="Seleccione el proveedor emisor del comprobante"><label>Proveedor <span class="badge">{cantidadProveedor}</span></label></td><td>:</td>
+			<td>[selectProveedor]</td></tr>
+		<tr><td title="Importe gravado del comprobante"><label>Importe Gravado</label></td><td>: $</td>
+			<td><input type="number" class="form-control" id="gravado" name="gravado" value="{gravado}" maxlength=9 placeholder="del comprobante" title="Ingrese el importe gravado del comprobante" tabindex=5></td></tr>	
+		<tr><td title="Importe exento del comprobante"><label>Importe Exento</label></td><td>: $</td>
+			<td><input type="number" class="form-control" id="exento" name="exento" value="{exento}" maxlength=9 placeholder="del comprobante" title="Ingrese el importe exento del comprobante" tabindex=6></td></tr>
+		<tr><td title="Importe retención DGI"><label>Retención DGI</label></td><td>: $</td>
+			<td><input type="number" class="form-control" id="retencionDgi" name="retencionDgi" value="{retencionDgi}" maxlength=9 placeholder="del comprobante" title="Ingrese el importe de la retención DGI" tabindex=7></td></tr>
+		<tr><td title="Importe percepción DGI"><label>Percepción DGI</label></td><td>: $</td>
+			<td><input type="number" class="form-control" id="percepcionDgi" name="percepcionDgi" value="{percepcionDgi}" maxlength=9 placeholder="del comprobante" title="Ingrese el importe de la percepción DGI" tabindex=8></td></tr>
+		<tr><td title="Importe retención Rentas"><label>Retención Rentas</label></td><td>: $</td>
+			<td><input type="number" class="form-control" id="retencionRenta" name="retencionRenta" value="{retencionRenta}" maxlength=9 placeholder="del comprobante" title="Ingrese el importe de la retención Rentas" tabindex=9></td></tr>
+		<tr><td title="Importe percepción Rentas"><label>Percepción Rentas</label></td><td>: $</td>
+			<td><input type="number" class="form-control" id="percepcionRenta" name="percepcionRenta" value="{percepcionRenta}" maxlength=9 placeholder="del comprobante" title="Ingrese el importe de la percepción Rentas" tabindex=10></td></tr>
+		<tr><td title="Otros importes del comprobante"><label>Otros Importes</label></td><td>: $</td>
+			<td><input type="number" class="form-control" id="otros" name="otros" value="{otros}" maxlength=9 placeholder="del comprobante" title="Ingrese los otros importes del comprobante" tabindex=11></td></tr>
+		<tr><td title="Importe de IVA del comprobante"><label>Importe de IVA</label></td><td>: $</td>
+			<td><input type="number" class="form-control" id="iva" name="iva" value="{iva}" maxlength=9 placeholder="del comprobante" title="Ingrese el importe de IVA del comprobante" tabindex=12></td></tr>
+		<tr><td title="Importe Total del comprobante"><label>Importe Total</label></td><td>: $</td>
+			<td><input type="number" class="form-control" id="total" name="total" value="{total}" maxlength=9 placeholder="del comprobante" title="Ingrese el importe total del comprobante" tabindex=13></td></tr>
+		<tr><td title="Comentario sobre el comprobante"><label>Comentario</label></td><td>:</td>
+			<td><input type="text" class="form-control" id="comentario" name="comentario" value="{comentario}" maxlength=30 placeholder="sobre el comprobante" title="Ingrese comentario sobre el comprobante" tabindex=14></td></tr>
+		
+	<script type="text/javascript">
+		$("#datepicker").datepicker({format:'yyyy-mm-dd', language: "es", endDate: "+0", todayBtn: "linked", todayHighlight:true, clearBtn:true, autoclose:true});
+  	</script>
+  		
+		<tfoot>		</tfoot>
+	</table>
+	<input type="hidden" name="consistencia" value="{consistencia}">
+	<input type="hidden" name="id" value="{id}">
