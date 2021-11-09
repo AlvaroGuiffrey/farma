@@ -2,7 +2,7 @@
 /**
  * Archivo de la clase ValueObject.
  *
- * Archivo de la clase MarcaVO que nos permite mapear la
+ * Archivo de la clase ArticuloVO que nos permite mapear la
  * estructura de la tabla articulos en un objeto para poder
  * realizar operaciones de tipo CRUD u otras sobre la tabla
  * articulos de la base de datos.
@@ -33,7 +33,7 @@
  *
  * Clase que nos permite mapear la tabla articulos a un objeto
  * que utlizaremos luego para realizar operaciones de tipo
- * CRUD y otras sobre la tabla articulos de la DB caro.
+ * CRUD y otras sobre la tabla articulos de la DB farma.
  *
  * @copyright  Copyright (c) 2015 Alvaro A. Guiffrey (http://www.alvaroguiffrey.com.ar)
  * @license    http://www.gnu.org/licenses/   GPL License
@@ -88,7 +88,7 @@ class ArticuloVO
 	{
 		return $this->_codigo;
 	}
-	
+
 	/**
 	 * Nos permite obtener el código asignado por la marca al artículo.
 	 *
@@ -98,7 +98,7 @@ class ArticuloVO
 	{
 		return $this->_codigoM;
 	}
-	
+
 	/**
 	 * Nos permite obtener el código de barra del artículo.
 	 *
@@ -108,7 +108,7 @@ class ArticuloVO
 	{
 		return $this->_codigoB;
 	}
-	
+
 	/**
 	 * Nos permite obtener el identificador de la marca del artículo.
 	 *
@@ -118,7 +118,7 @@ class ArticuloVO
 	{
 		return $this->_idMarca;
 	}
-	
+
 	/**
 	 * Nos permite obtener el identificador del rubro del artículo.
 	 *
@@ -128,7 +128,7 @@ class ArticuloVO
 	{
 		return $this->_idRubro;
 	}
-	
+
 	/**
 	 * Nos permite obtener el nombre del artículo.
 	 *
@@ -148,7 +148,7 @@ class ArticuloVO
 	{
 		return $this->_presentacion;
 	}
-	
+
 	/**
 	 * Nos permite obtener el comentario sobre el artículo.
 	 *
@@ -168,7 +168,7 @@ class ArticuloVO
 	{
 		return $this->_margen;
 	}
-	
+
 	/**
 	 * Nos permite obtener el costo del artículo.
 	 *
@@ -178,7 +178,7 @@ class ArticuloVO
 	{
 		return $this->_costo;
 	}
-	
+
 	/**
 	 * Nos permite obtener el precio de venta del artículo.
 	 *
@@ -188,7 +188,7 @@ class ArticuloVO
 	{
 		return $this->_precio;
 	}
-	
+
 	/**
 	 * Nos permite obtener fecha del precio del artículo.
 	 *
@@ -198,7 +198,7 @@ class ArticuloVO
 	{
 		return $this->_fechaPrecio;
 	}
-	
+
 	/**
 	 * Nos permite obtener el stock del artículo.
 	 *
@@ -211,7 +211,7 @@ class ArticuloVO
 
 	/**
 	 * Nos permite obtener el estado del rotulo del artículo.
-	 * Si se imprime rotulo para excibir o colocar en góndola 
+	 * Si se imprime rotulo para excibir o colocar en góndola
 	 *
 	 * @return integer
 	 */
@@ -219,7 +219,7 @@ class ArticuloVO
 	{
 		return $this->_rotulo;
 	}
-	
+
 	/**
 	 * Nos permite obtener el índice del proveedor de referencia.
 	 *
@@ -231,7 +231,7 @@ class ArticuloVO
 	}
 
 	/**
-	 * Nos permite obtener la opción para actualizar el proveedor 
+	 * Nos permite obtener la opción para actualizar el proveedor
 	 * de referencia.
 	 *
 	 * @return integer
@@ -240,7 +240,7 @@ class ArticuloVO
 	{
 		return $this->_opcionProv;
 	}
-	
+
 	/**
 	 * Nos permite obtener si existen equivalencias de productos
 	 * con el de los proveedores.
@@ -251,7 +251,7 @@ class ArticuloVO
 	{
 		return $this->_equivalencia;
 	}
-	
+
 	/**
 	 * Nos permite obtener el código de iva de AFIP.
 	 *
@@ -261,7 +261,7 @@ class ArticuloVO
 	{
 		return $this->_codigoIva;
 	}
-	
+
 	/**
 	 * Nos permite obtener la ruta de la foto del artículo.
 	 *
@@ -271,7 +271,7 @@ class ArticuloVO
 	{
 		return $this->_foto;
 	}
-	
+
 	/**
 	 * Nos permite obtener el estado del artículo.
 	 *
@@ -281,7 +281,7 @@ class ArticuloVO
 	{
 		return $this->_estado;
 	}
-	
+
 	/**
 	 * Nos permite obtener Id del usuario que actualizó último.
 	 *
@@ -322,7 +322,7 @@ class ArticuloVO
 	{
 		$this->_codigo = $codigo;
 	}
-	
+
 	/**
 	 * Nos permite establecer el código de la marca del artículo.
 	 *
@@ -332,7 +332,7 @@ class ArticuloVO
 	{
 		$this->_codigoM = $codigoM;
 	}
-	
+
 	/**
 	 * Nos permite establecer el código de barra del artículo.
 	 *
@@ -342,7 +342,7 @@ class ArticuloVO
 	{
 		$this->_codigoB = $codigoB;
 	}
-	
+
 	/**
 	 * Nos permite establecer el identificador de la marca del artículo.
 	 *
@@ -361,8 +361,8 @@ class ArticuloVO
 	public function setIdRubro($idRubro)
 	{
 		$this->_idRubro = $idRubro;
-	}	
-	
+	}
+
 	/**
 	 * Nos permite establecer el nombre del articulo.
 	 *
@@ -382,7 +382,7 @@ class ArticuloVO
 	{
 		$this->_presentacion = $presentacion;
 	}
-	
+
 	/**
 	 * Nos permite establecer comentario para el articulo.
 	 *
@@ -398,7 +398,7 @@ class ArticuloVO
 	 *
 	 * @param decimal(3,2) $margen
 	 */
-	public function setMargen($margen)	
+	public function setMargen($margen)
 	{
 		$this->_margen = $margen;
 	}
@@ -412,7 +412,7 @@ class ArticuloVO
 	{
 		$this->_costo = $costo;
 	}
-	
+
 	/**
 	 * Nos permite establecer el precio de venta del artículo.
 	 *
@@ -421,8 +421,8 @@ class ArticuloVO
 	public function setPrecio($precio)
 	{
 		$this->_precio = $precio;
-	}	
-	
+	}
+
 	/**
 	 * Nos permite establecer la fecha del precio del artículo.
 	 *
@@ -453,7 +453,7 @@ class ArticuloVO
 	{
 		$this->_rotulo = $rotulo;
 	}
-	
+
 	/**
 	 * Nos permite establecer el id del proveedor de referencia.
 	 *
@@ -465,7 +465,7 @@ class ArticuloVO
 	}
 
 	/**
-	 * Nos permite establecer la opción para actualizar el proveedor 
+	 * Nos permite establecer la opción para actualizar el proveedor
 	 * de referencia.
 	 *
 	 * @param integer $opcionProv
@@ -474,7 +474,7 @@ class ArticuloVO
 	{
 		$this->_opcionProv = $opcionProv;
 	}
-	
+
 	/**
 	 * Nos permite establecer un indicador para saber si hay equivalencias
 	 * de artículos de los proveedores.
@@ -485,7 +485,7 @@ class ArticuloVO
 	{
 		$this->_equivalencia = $equivalencia;
 	}
-	
+
 	/**
 	 * Nos permite establecer el código de IVA de la AFIP.
 	 *
@@ -495,7 +495,7 @@ class ArticuloVO
 	{
 		$this->_codigoIva = $codigoIva;
 	}
-	
+
 	/**
 	 * Nos permite establecer ruta de la foto del artículo.
 	 *
@@ -505,17 +505,17 @@ class ArticuloVO
 	{
 		$this->_foto = $foto;
 	}
-	
+
 	/**
 	 * Nos permite establecer el estado el artículo.
-	 * 
+	 *
 	 * @param integer $estado
 	 */
 	public function setEstado($estado)
 	{
 		$this->_estado = $estado;
 	}
-	
+
 	/**
 	 * Nos permite establecer la ID del último usuario que actualizó tabla.
 	 *

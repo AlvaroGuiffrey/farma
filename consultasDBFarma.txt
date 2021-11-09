@@ -1,0 +1,3 @@
+*** Consulta de artículos con precios máximos ***
+
+SELECT articulos_pm.id, articulos.id, articulos_pm.codigo_b, articulos.nombre, articulos.precio, articulos_pm.precio, articulos.rotulo FROM `articulos_pm` INNER JOIN `articulos` ON articulos_pm.codigo_b = articulos.codigo_b

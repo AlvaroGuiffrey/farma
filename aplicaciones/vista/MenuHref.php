@@ -23,6 +23,7 @@ class MenuHref
 			"{hrefRotulos}" => self::$dir."/modulos/rotulo/index.php",
 			"{hrefDescartaArticulos}" => self::$dir."/modulos/articulo/indexD.php",
 		    "{hrefArticulosCondi}" => self::$dir."/modulos/articulo/indexAC.php",
+			"{hrefArticulosPM}" => self::$dir."/modulos/articulo/indexAPM.php",
 			"{hrefBackupTablasI}" => self::$dir."/modulos/backup/indexI.php",
 			// compras
 			"{hrefProveedores}" => self::$dir."/modulos/proveedor/index.php",

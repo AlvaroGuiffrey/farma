@@ -39,7 +39,7 @@
  * Versión 2.0
  * @author Alvaro Guiffrey
  * @fecha 22/04/2021.
- * Se cambia la forma de obtener el directorio principal del proyecto para 
+ * Se cambia la forma de obtener el directorio principal del proyecto para
  * utilizar esta clase en solicitudes ajax.
  */
 
@@ -61,8 +61,8 @@ class Clase
 		// Modificación en Versión 2.0 para utilizar ajax
 	    $dir = substr(__DIR__, strlen($_SERVER['DOCUMENT_ROOT']));
 	    $aDir = explode("\\", $dir);
-	    $ruta = $_SERVER['DOCUMENT_ROOT']."/".$aDir[1]; 
-		
+	    $ruta = $_SERVER['DOCUMENT_ROOT']."/".$aDir[1];
+
 		// Se declaran las clases en el array
 		$aClases = array(
 				// aplicaciones
@@ -104,6 +104,7 @@ class Clase
 				"ArticuloControlActPrueba"=>$ruta."/modulos/articulo/control/ArticuloControlActPrueba.php",
 		        "ArticuloControlActPU"=>$ruta."/modulos/articulo/control/ArticuloControlActPU.php",
 				"ArticuloControlDescarta"=>$ruta."/modulos/articulo/control/ArticuloControlDescarta.php",
+				"ArticuloControlPM"=>$ruta."/modulos/articulo/control/ArticuloControlPM.php",
 				"ArticuloDatos"=>$ruta."/modulos/articulo/includes/ArticuloDatos.php",
 		        "ArticuloCondiDatos"=>$ruta."/modulos/articulo/includes/ArticuloCondiDatos.php",
 				"ArticuloOpcionProv"=>$ruta."/modulos/articulo/includes/ArticuloOpcionProv.php",
@@ -118,6 +119,9 @@ class Clase
 				"ArticuloActiveRecord"=>$ruta."/modulos/articulo/modelo/ArticuloActiveRecord.php",
 				"ArticuloModelo"=>$ruta."/modulos/articulo/modelo/ArticuloModelo.php",
 				"ArticuloVO"=>$ruta."/modulos/articulo/modelo/ArticuloVO.php",
+				"ArticuloPMActiveRecord"=>$ruta."/modulos/articulo/modelo/ArticuloPMActiveRecord.php",
+				"ArticuloPMModelo"=>$ruta."/modulos/articulo/modelo/ArticuloPMModelo.php",
+				"ArticuloPMVO"=>$ruta."/modulos/articulo/modelo/ArticuloPMVO.php",
 				// modulos/backup
 				"BackupControlI"=>$ruta."/modulos/backup/control/BackupControlI.php",
 				// modulos/condicion

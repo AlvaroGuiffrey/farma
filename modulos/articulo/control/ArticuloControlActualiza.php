@@ -20,7 +20,7 @@
  *
  * @copyright  Copyright (c) 2015 Alvaro Guiffrey <alvaroguiffrey@gmail.com>
  * @license    http://www.gnu.org/licenses/   GPL License
- * @version    4.0
+ * @version    5.0
  * @link       http://www.alvaroguiffrey.com.ar
  * @since      File available since Release 1.0
  */
@@ -35,8 +35,8 @@
  * @author     Alvaro Guiffrey <alvaroguiffrey@gmail.com>
  * @copyright  Copyright (c) 2015 Alvaro Guiffrey
  * @license    http://www.gnu.org/licenses/   GPL License
- * @version    4.0
- * @date       09/08/2021 modificado
+ * @version    5.0
+ * @date       26/10/2021 modificado
  * @link       http://www.alvaroguiffrey.com.ar
  * @since      Class available since Release 1.0
  *
@@ -45,6 +45,9 @@
  * datos de los artículos que actualiza en un archivo html.
  *
  * Versión 4.0 - Se controla si el artículo existe en plex antes de actualizar.
+ *
+ * Versión 5.0 - Se controla si el artículo tiene precio máximo s/resolución
+ * del Gob.Nacional
  */
 
 class ArticuloControlActualiza
@@ -66,6 +69,7 @@ class ArticuloControlActualiza
     private $_precioPU;
     private $_precioAnt;
     private $_precioAct;
+    private $_precioMax;
     private $_condicion;
     private $_aumenta;
     private $_baja;
@@ -82,6 +86,7 @@ class ArticuloControlActualiza
     private $_aAcciones = array();
     private $_aEventos = array();
     private $_aArticulosCondi = array();
+    private $_aArticulosPM = array();
     private $_aCondicionIva = array();
     private $_aProveedores = array();
     private $_aProveedoresLista = array();
@@ -235,6 +240,7 @@ class ArticuloControlActualiza
                 $oDatoVista->setDato('{cantNoLeidos}', 0);
                 $oDatoVista->setDato('{cantPromo}', 0);
                 $oDatoVista->setDato('{cantPrecioUnificado}', 0);
+                $oDatoVista->setDato('{cantPrecioMaximo}', 0);
                 $oDatoVista->setDato('{cantImprimeRotulo}', 0);
                 $oDatoVista->setDato('{cantImprimeRotuloPromo}', 0);
                 $oDatoVista->setDato('{cantInexistentesPlex}', 0);
@@ -284,6 +290,7 @@ class ArticuloControlActualiza
                 $actualiza = $noActualiza = $promoNoActualiza = $PUNoActualiza = $aumentos = $baja = 0;
                 $diferenciaMenor = $imprimeRotulo = $imprimeRotuloPromo = $noLeidos = $inexistentesPlex = 0;
                 $cont = $agrega = $condi = $masTreinta = $masVeinte = $masDiez = $masCinco = $menosCinco = 0;
+                $PMNoActualiza = 0;
                 $linea1 = $linea2 = ''; // Lineas para mostrar datos de los artículo
                 unset($this->_aDatosTabla); // elimina datos del array para tabla
                 // carga array condición IVA
@@ -301,7 +308,11 @@ class ArticuloControlActualiza
                     $this->_aProveedores[$this->_item['id']] = $this->_item['inicial'];
                     $this->_aProveedoresLista[$this->_item['id']] = $this->_item['lista'];
                 }
-
+                // carga array precios máximos
+                $this->_items = $oArticuloPMModelo->findAll();
+                foreach ($this->_items as $this->_item) {
+                    $this->_aArticulosPM[$this->_item['codigo_b']] = $this->_item['precio'];
+                }
                 /**
                  * Carga los artículos actualizables según los siguientes datos:
                  *
@@ -360,17 +371,21 @@ class ArticuloControlActualiza
                             echo "<b><<< Artículo inexistente en PLEX >>> ".$this->_item['codigo']."</b><br>";
                             $inexistentesPlex++;
                         /**
-                         * SI es PROMO o PRECIO UNIFICADO (en nombre del artículo) no actualizo
+                         * SI es PROMO; PRECIO UNIFICADO o PRECIO MAXIMO (en nombre del artículo) no actualizo
                          */
                         } elseif (strpos($this->_item['nombre'], 'PR.') !== false) { // Artículo con PROMO
                             //$linea2 .= "<b style='color:orange;'> <<< PROMO >>>> NO MODIFICA </b>";
                             $this->_condicion = "PROMO";
                             $promoNoActualiza++;
+                        } elseif (strpos($this->_item['nombre'], 'PMAX.') !== false) { // Artículo con Precio Máximo
+                            //$linea2 .= "<b style='color:orange;'> <<< PR.MAX. >>>> NO MODIFICA </b>";
+                            $this->_condicion = "PR.MAX.";
+                            $PMNoActualiza++;
                         } elseif (strpos($this->_item['presentacion'], '(PU.') !== false) {	// Artículo con PRECIO UNIFICADO
                             //$linea2 .= "<b style='color:orange;'> <<< PRECIO UNIFICADO >>>> NO MODIFICA </b>";
                             $this->_condicion = "P.UNIF";
                             $PUNoActualiza++;
-                        } else {	// Artículo sin condición desde el nombre (PR. o PU.)
+                        } else {	// Artículo sin condición desde el nombre (PR. ; PU. o PM.)
                             /**
                              * Calcula el precio con lista del proveedor de referencia
                              */
@@ -607,7 +622,7 @@ class ArticuloControlActualiza
                                     //$linea1 .= "<b style='color:SlateBlue;'>NO LEI PRODUCTO - NO ACTUALIZA</b>";
                                 }
                             } // fin NO encontró el producto en proveedores
-                        } // fin sin condición en nombre (PR. o PU.)
+                        } // fin sin condición en nombre (PR. ; PU. o PM.)
                         //echo $linea1."<br>";
                         //if ($linea2 != ' ') echo $linea2."<br>";
                     } // fin foreach de articulos x artículo
@@ -650,6 +665,7 @@ class ArticuloControlActualiza
                 $oDatoVista->setDato('{cantNoLeidos}', $noLeidos);
                 $oDatoVista->setDato('{cantPromo}', $promoNoActualiza);
                 $oDatoVista->setDato('{cantPrecioUnificado}', $PUNoActualiza);
+                $oDatoVista->setDato('{cantPrecioMaximo}', $PMNoActualiza);
                 $oDatoVista->setDato('{cantImprimeRotulo}', $imprimeRotulo);
                 $oDatoVista->setDato('{cantImprimeRotuloPromo}', $imprimeRotuloPromo);
                 $oDatoVista->setDato('{cantInexistentesPlex}', $inexistentesPlex);
@@ -732,6 +748,7 @@ class ArticuloControlActualiza
                 $oDatoVista->setDato('{cantNoLeidos}', 0);
                 $oDatoVista->setDato('{cantPromo}', 0);
                 $oDatoVista->setDato('{cantPrecioUnificado}', 0);
+                $oDatoVista->setDato('{cantPrecioMaximo}', 0);
                 $oDatoVista->setDato('{cantImprimeRotulo}', 0);
                 $oDatoVista->setDato('{cantImprimeRotuloPromo}', 0);
                 $oDatoVista->setDato('{cantInexistentesPlex}', 0);
@@ -775,6 +792,7 @@ class ArticuloControlActualiza
                 $actualiza = $noActualiza = $promoNoActualiza = $PUNoActualiza = $aumentos = $baja = 0;
                 $diferenciaMenor = $imprimeRotulo = $imprimeRotuloPromo = $noLeidos = $inexistentesPlex = 0;
                 $cont = $agrega = $condi = $masTreinta = $masVeinte = $masDiez = $masCinco = $menosCinco = 0;
+                $PMNoActualiza = 0;
                 $linea1 = $linea2 = ''; // Lineas para mostrar datos de los artículo
                 // carga array condición IVA
                 $oAfipCondicionIvaVO = new AfipCondicionIvaVO();
@@ -840,6 +858,10 @@ class ArticuloControlActualiza
                             //$linea2 .= "<b style='color:orange;'> <<< PROMO >>>> NO MODIFICA </b>";
                             $this->_condicion = "PROMO";
                             $promoNoActualiza++;
+                        } elseif (strpos($this->_item['nombre'], 'PMAX.') !== false) { // Artículo con Precio Máximo
+                            //$linea2 .= "<b style='color:orange;'> <<< PR.MAX. >>>> NO MODIFICA </b>";
+                            $this->_condicion = "PR.MAX.";
+                            $PMNoActualiza++;
                         } elseif (strpos($this->_item['presentacion'], '(PU.') !== false) {	// Artículo con PRECIO UNIFICADO
                             //$linea2 .= "<b style='color:orange;'> <<< PRECIO UNIFICADO >>>> NO MODIFICA </b>";
                             $this->_condicion = "P.UNIF";
@@ -1056,7 +1078,7 @@ class ArticuloControlActualiza
                                     //$linea1 .= "<b style='color:SlateBlue;>'NO LEI PRODUCTO - NO ACTUALIZA</b>";
                                 //}
                             } // fin NO encontró el producto en proveedores
-                        } // fin sin condición en nombre (PR. o PU.)
+                        } // fin sin condición en nombre (PR. ; PU. o PM.)
                         //echo $linea1."<br>";
                         //if ($linea2 != ' ') echo $linea2."<br>";
                     } // fin foreach de articulos x artículo
@@ -1102,6 +1124,7 @@ class ArticuloControlActualiza
                 $oDatoVista->setDato('{cantNoLeidos}', $noLeidos);
                 $oDatoVista->setDato('{cantPromo}', $promoNoActualiza);
                 $oDatoVista->setDato('{cantPrecioUnificado}', $PUNoActualiza);
+                $oDatoVista->setDato('{cantPrecioMaximo}', $PMNoActualiza);
                 $oDatoVista->setDato('{cantImprimeRotulo}', $imprimeRotulo);
                 $oDatoVista->setDato('{cantImprimeRotuloPromo}', $imprimeRotuloPromo);
                 $oDatoVista->setDato('{cantInexistentesPlex}', $inexistentesPlex);
