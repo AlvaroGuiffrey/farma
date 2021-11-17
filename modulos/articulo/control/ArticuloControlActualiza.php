@@ -309,7 +309,7 @@ class ArticuloControlActualiza
                     $this->_aProveedoresLista[$this->_item['id']] = $this->_item['lista'];
                 }
                 // carga array precios máximos
-                $this->_items = $oArticuloPMModelo->findAll();
+                //$this->_items = $oArticuloPMModelo->findAll();
                 foreach ($this->_items as $this->_item) {
                     $this->_aArticulosPM[$this->_item['codigo_b']] = $this->_item['precio'];
                 }
