@@ -170,12 +170,12 @@ class ProductoKEControl
 				$oDatoVista->setDato('{tituloPanel}', 'Actualiza Productos - Selección de acciones');
 				$oDatoVista->setDato('{informacion}', '<p>Puede seleccionar acciones para los productos de las listas</p>
 														<p>de precios de los proveedores, ver botones.');
-				/*
+
 				// Mensaje de problemas del proveedor
 				$oCargarVista->setCarga('alertaPeligro', '/includes/vista/alertaPeligro.html');
 				// ingresa los datos a representar en las alertas de la vista
-				$oDatoVista->setDato('{alertaPeligro}',  'Proveedor con PROBLEMAS en la lista. <b>NO ACTUALIZA!!!</b>.');
-				*/
+				$oDatoVista->setDato('{alertaPeligro}',  '<b>ATENCION!!!</b>. Abrir y verificar el csv descargado del proveedor.');
+
 				// arma la tabla de datos a representar
 				// carga datos del proveedor
 				$this->_idProveedor = 4;
@@ -410,6 +410,7 @@ class ProductoKEControl
 				$oProductoVO->setIdProveedor($this->_idProveedor);
 				$this->_aProductos = $oProductoModelo->findAllPorIdProveedorParaModi($oProductoVO);
 				//echo "Cantidad de productos: ". $oProductoModelo->getCantidad()."<br>";
+				$aProductos = [];
 				foreach ($this->_aProductos as $this->_item){
 				    $aValores = array($this->_item['codigo_p'], $this->_item['codigo_b']);
 				    $aProductos[$this->_item['id']] = implode(",", $aValores);

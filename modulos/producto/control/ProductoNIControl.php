@@ -53,7 +53,7 @@
   *
   */
  /**
-  * Modificación para evitar problemas cuando viene con caracteres codificados 
+  * Modificación para evitar problemas cuando viene con caracteres codificados
   * en utf8 "ñ o Ñ" nos corre la posición de lectura del txt.
   * Utilizamos decode cuando leemos la linea del txt.
   * @author     Alvaro Guiffrey
@@ -234,18 +234,18 @@ class ProductoNIControl
 				for( $i = 0; $i < sizeof( $contenido ); $i++) {
 				    // ----- Modificación caracteres especiales - Mod: 18/12/2020
 				    if ($this->_switchCaracter == "SI") {
-				        // Si viene codificado en UTF8 pone signo ? 
+				        // Si viene codificado en UTF8 pone signo ?
 					   $linea = utf8_decode(trim( $contenido[ $i ] ));
 				    } else {
 				       $linea = trim( $contenido[ $i ] );
 				    }
-				    // ----- Fin modificación 
-					
+				    // ----- Fin modificación
+
 					$codigoP = substr($linea, 0, 13);
 					$codigoP = trim($codigoP);
 					$codigoB = substr($linea, 14, 13);
 					$codigoB = trim($codigoB);
-					// Nombre 
+					// Nombre
 					$nombre = substr($linea, 28, 30);
 					$nombre = trim($nombre);
 					// ----- Modificación caracteres especiales - Mod: 18/12/2020
@@ -255,7 +255,7 @@ class ProductoNIControl
 					$precio =trim($precio);
 					// Muestra los datos para control y prueba de la modificación
 					//echo $linea." -> $ ".$precio." / Nombre -> ".$nombre."<br>";
-										
+
 					// Agrega otros datos necesarios
 					$codigoIva = 5; // Precio final con iva incluido (21%)
 					$tipoDescuento = 3; // Precio neto sin descuento
@@ -398,6 +398,7 @@ class ProductoNIControl
 				$oProductoVO->setIdProveedor($this->_idProveedor);
 				$this->_aProductos = $oProductoModelo->findAllPorIdProveedorParaModi($oProductoVO);
 				//echo "Cantidad de productos: ". $oProductoModelo->getCantidad()."<br>";
+				$aProductos = [];
 				foreach ($this->_aProductos as $this->_item){
 				    $aValores = array($this->_item['codigo_p'], $this->_item['codigo_b']);
 				    $aProductos[$this->_item['id']] = implode(",", $aValores);
