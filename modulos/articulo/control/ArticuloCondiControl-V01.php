@@ -20,7 +20,7 @@
  *
  * @copyright  Copyright (c) 2015 Alvaro Guiffrey <alvaroguiffrey@gmail.com>
  * @license    http://www.gnu.org/licenses/   GPL License
- * @version    2.0
+ * @version    1.0
  * @link       http://www.alvaroguiffrey.com.ar
  * @since      File available since Release 1.0
  */
@@ -36,17 +36,12 @@
  * @author     Alvaro Guiffrey <alvaroguiffrey@gmail.com>
  * @copyright  Copyright (c) 2015 Alvaro Guiffrey
  * @license    http://www.gnu.org/licenses/   GPL License
- * @version    2.0
+ * @version    1.1
  * @link       http://www.alvaroguiffrey.com.ar
  * @since      Class available since Release 1.0
  *
  * @modificación    Armo vector para imprimir en orden alfabético los rótulos.
  * @date            03/12/2020
- *
- * VERSION 2.0
- * @modificación    Se optimisó la rutina de busqueda por codigo de producto del
- *                  del proveedore
- * @date            04/03/2021
  *
  */
 class ArticuloCondiControl
@@ -64,7 +59,6 @@ class ArticuloCondiControl
     private $_aPreciosCondi = array();
     private $_aCondicion = array();
     private $_aArticulosCondi = array();
-    private $_aArticulos = array();
     private $_aRotulos = array();
     private $_aAcciones = array();
     private $_aEventos = array();
@@ -406,9 +400,9 @@ class ArticuloCondiControl
                             ArticuloCondiDatos::cargaDatos($oArticuloVO, $oDatoVista, $oCondicionVO, $this->_accion);
                         }
                     } else { // fin por Código Barra. Busca por código del proveedor
+// >>>>  CODIGO DE PROVEEDOR <<<<<
                         /*
                          * Busca por Código de Proveedor
-                         * Revisión VERSION 2.0
                          */
                         if($_POST['codigoProv'] != " "){
                             $codigoProv = strval($_POST['codigoProv']);
@@ -423,7 +417,7 @@ class ArticuloCondiControl
                                     $oArticuloVO->setCodigoB($this->_item['codigo_b']);
                                 }
                                 // Verifica si hay más de un artículo con el mismo código de barra
-                                $aArticulo = $oArticuloModelo->findAllPorCodigoB($oArticuloVO);
+                                $oArticuloModelo->findAllPorCodigoB($oArticuloVO);
                                 $this->_cantidad = $oArticuloModelo->getCantidad();
                                 // ingresa los datos a representar en el Panel de la vista
                                 $oDatoVista->setDato('{cantidad}', $this->_cantidad);
@@ -460,56 +454,105 @@ class ArticuloCondiControl
                                     $oCargarVista->setCarga('aEventos', $this->_aEventos);
                                     ArticuloCondiDatos::cargaDatos($oArticuloVO, $oDatoVista, $oCondicionVO, $this->_accion);
                                 } // Fin busca artículo por código de barra para un producto
-                            // *** HAY UN PRODUCTO CON MÁS DE UN CODIGO DE BARRA ***
                             } elseif ($cantProductos > 1) {
-                                // ingresa los datos a representar en el Panel de la vista
-                                $oDatoVista->setDato('{cantidad}', $this->_cantidad);
-                                // carga el contenido html
-                                $oCargarVista->setCarga('opcion', '/modulos/articulo/vista/buscarArticuloCondi.html');
-                                // carga la alerta de advertencia
-                                $alertaAdvertencia = 'Producto con <b>'.$cantProductos.' códigos de barra !!!</b>';
-                                foreach ($this->_items as $this->_item) {
-                                    $alertaAdvertencia = $alertaAdvertencia.'<br> --> Cod.Barra: <b>'.$this->_item['codigo_b'].' </b>';
-                                    $precioAdv = number_format($this->_item['precio'], 2, ",", ".");
-                                    $alertaAdvertencia = $alertaAdvertencia.'- Precio Prov.: $'.$precioAdv.'</b>';
-                                    $alertaAdvertencia = $alertaAdvertencia.'- Cod.Prov.: ['.$this->_item['codigo_p'].']</b>';
-                                }
-                                $oCargarVista->setCarga('alertaAdvertencia', '/includes/vista/alertaAdvertencia.html');
-                                $oDatoVista->setDato('{alertaAdvertencia}', $alertaAdvertencia);
-                                reset($this->_items);
-                                // carga la alerta de información
-                                $alertaInfo = 'Artículos equivalentes y activos en PLEX !!!</b>';
-                                $this->_cont = 0;
-                                foreach ($this->_items as $this->_item) {
-                                    $oArticuloVO->setCodigoB($this->_item['codigo_b']);
-                                    $aArticulo = $oArticuloModelo->findAllPorCodigoB($oArticuloVO);
-                                    $this->_cantidad = $oArticuloModelo->getCantidad();
-                                    if ($oArticuloModelo->getCantidad() == 1) {
-                                        $alertaInfo = $alertaInfo.'<br> --> Buscar p/Cod.Barra: <b>'.$this->_item['codigo_b'].'</b>';
-                                        $alertaInfo = $alertaInfo.' - '.$this->_item['nombre'];
-                                        $this->_cont++;
-                                    } elseif ($oArticuloModelo->getCantidad() > 1) {
-                                        $alertaInfo = $alertaInfo.'<br> *** Cod.Barra: <b>'.$this->_item['codigo_b'].'</b>';
-                                        $alertaInfo = $alertaInfo.' *** Repetido en PLEX. VERIFICAR!!!';
-                                        $this->_cont = $this->_cont + $oArticuloModelo->getCantidad();
-                                    } else {
-                                        $alertaInfo = $alertaInfo.'<br> <<< Cod.Barra: <b>'.$this->_item['codigo_b'].'</b>';
-                                        $alertaInfo = $alertaInfo.' >>> Sin artículo en PLEX!!!';
-                                    }
-                                }
-                                $alertaInfo = $alertaInfo.'<br>Son: '.$this->_cont.' artículos.';
-                                $oCargarVista->setCarga('alertaInfo', '/includes/vista/alertaInfo.html');
-                                $oDatoVista->setDato('{alertaInfo}', $alertaInfo);
+                                // code...
+                            }
+// ------- <<<<< VER DESDE ACA >>>>> utilizar elseif para simplificar un poco
+
                             // No existe el código del proveedor
-                            } else { // no existe código de proveedor ingresado
+                            if ($this->_cantidad == 0){ // no existe código de proveedor ingresado
                                 // ingresa los datos a representar en el Panel de la vista
                                 $oDatoVista->setDato('{cantidad}', $this->_cantidad);
                                 // carga el contenido html
                                 $oCargarVista->setCarga('opcion', '/modulos/articulo/vista/buscarArticuloCondi.html');
                                 $oCargarVista->setCarga('alertaPeligro', '/includes/vista/alertaPeligro.html');
-                                $oDatoVista->setDato('{alertaPeligro}',  '<b>No encontró el PRODUCTO: '.$codigoProv.'</b>.
-                                                                        Intente otra búsqueda o ver en LISTA del proveedor.');
-                            }
+                                $oDatoVista->setDato('{alertaPeligro}',  '<b>No encontró el PRODUCTO</b>. Intente otra búsqueda o ver en LISTA proveedor.');
+
+                            } else { // existe código de proveedor ingresado
+                                // Si hay mas de un producto aviso con mensaje - puede repetir el proceso para más artículos
+
+                                // *** HAY UN PRODUCTO CON MÁS DE UN CODIGO DE BARRA ***
+                                if ($this->_cantidad > 1) { // más de un código de barra
+                                    // ingresa los datos a representar en el Panel de la vista
+                                    $oDatoVista->setDato('{cantidad}', $this->_cantidad);
+                                    // carga el contenido html
+                                    // $oCargarVista->setCarga('opcion', '/modulos/articulo/vista/buscarArticuloCondi.html');
+                                    $alertaInfo = 'Producto con <b>'.$this->_cantidad.' códigos de barra !!!</b>';
+                                    $this->_cont = 0;
+                                    foreach ($this->_items as $this->_item) {
+                                        $oArticuloVO->setCodigoB($this->_item['codigo_b']);
+                                        $oArticuloModelo->findPorCodigoB($oArticuloVO);
+                                        if ($oArticuloModelo->getCantidad() == 1) {
+                                            $alertaInfo = $alertaInfo.'<br> --> Buscar p/Cod.Barra: <b>'.$oArticuloVO->getCodigoB().'</b>';
+                                            $this->_cont++;
+                                        }
+                                    }
+                                    // Ver desde acá si hay un solo artículo de varios códigos de barra
+                                    if ($this->_cont == 1) {
+                                        // Vuelve a consultar artículo para cargar datos de cod. barra
+                                        $oArticuloModelo->find($oArticuloVO);
+                                        $this->_cantidad = $oArticuloModelo->getCantidad();
+                                        $oDatoVista->setDato('{cantidad}', $this->_cantidad);
+                                        // revisa si imprime rótulo y avisa
+                                        if ($oArticuloVO->getRotulo() == 0) {
+                                            $oCargarVista->setCarga('alertaInfo', '/includes/vista/alertaInfo.html');
+                                            $oDatoVista->setDato('{alertaInfo}',  'Artículo sin <b>ROTULO</b> para góndola.');
+                                        }
+                                        // carga el contenido html
+                                        $oCargarVista->setCarga('datos', '/modulos/articulo/vista/verDatosCondi.html');
+                                        // carga los eventos (botones)
+                                        $this->_aEventos = array(
+                                            "agregarConf" => "/includes/vista/botonAgregarConf.html",
+                                            "volver" => "/includes/vista/botonVolver.html"
+                                        );
+                                        $oCargarVista->setCarga('aEventos', $this->_aEventos);
+                                        ArticuloCondiDatos::cargaDatos($oArticuloVO, $oDatoVista, $oCondicionVO, $this->_accion);
+                                    } elseif($this->_cont > 1) {
+                                        $oCargarVista->setCarga('opcion', '/modulos/articulo/vista/buscarArticuloCondi.html');
+                                        $oCargarVista->setCarga('alertaInfo', '/includes/vista/alertaInfo.html');
+                                        $oDatoVista->setDato('{alertaInfo}',  $alertaInfo);
+                                        $oCargarVista->setCarga('alertaSuceso', '/includes/vista/alertaSuceso.html');
+                                        $oDatoVista->setDato('{alertaSuceso}',  '<b>Encontró '.$this->_cont.' artículos en PLEX</b>.');
+                                    } else {
+                                        $oCargarVista->setCarga('opcion', '/modulos/articulo/vista/buscarArticuloCondi.html');
+                                        $oCargarVista->setCarga('alertaPeligro', '/includes/vista/alertaPeligro.html');
+                                        $oDatoVista->setDato('{alertaPeligro}',  '<b>No encontró artículos en PLEX</b>.');
+                                    }
+                                // *** HAY UN PRODUCTO CON UN CODIGO DE BARRA ***
+                                } else { // un código de barra
+                                    foreach ($this->_items as $this->_item) {
+                                        $oArticuloVO->setCodigoB($this->_item['codigo_b']);
+                                    }
+                                    $oArticuloModelo->findPorCodigoB($oArticuloVO); // artículo activo
+                                    $this->_cantidad = $oArticuloModelo->getCantidad();
+                                    // ingresa los datos a representar en el Panel de la vista
+                                    $oDatoVista->setDato('{cantidad}', $this->_cantidad);
+                                    // *** Busca Artículo por Código de Barra ***
+                                    if ($this->_cantidad == 0){ // No encontró artículo por código de barra
+                                        // carga el contenido html
+                                        $oCargarVista->setCarga('opcion', '/modulos/articulo/vista/buscarArticuloCondi.html');
+                                        $oCargarVista->setCarga('alertaPeligro', '/includes/vista/alertaPeligro.html');
+                                        $oDatoVista->setDato('{alertaPeligro}',  '<b>No encontró artículo en PLEX</b>. Intente otra búsqueda o ver p/AGREGAR.');
+                                    }else{ // Encontró artículo por código de barra
+                                        // revisa si imprime rótulo y avisa
+                                        if ($oArticuloVO->getRotulo() == 0){
+                                            $oCargarVista->setCarga('alertaInfo', '/includes/vista/alertaInfo.html');
+                                            $oDatoVista->setDato('{alertaInfo}',  'Artículo sin <b>ROTULO</b> para góndola.');
+                                        }
+                                        // carga el contenido html
+                                        $oCargarVista->setCarga('datos', '/modulos/articulo/vista/verDatosCondi.html');
+                                        // carga los eventos (botones)
+                                        $this->_aEventos = array(
+                                            "agregarConf" => "/includes/vista/botonAgregarConf.html",
+                                            "volver" => "/includes/vista/botonVolver.html"
+                                        );
+                                        $oCargarVista->setCarga('aEventos', $this->_aEventos);
+                                        ArticuloCondiDatos::cargaDatos($oArticuloVO, $oDatoVista, $oCondicionVO, $this->_accion);
+                                    } // Fin busca artículo por código de barra
+                                }
+                            } // Fin tiene código de proveedor
+
+// ----------  FINAL DE LA REVISION ------------------------------------
                         } // Fin buscar por Código de Proveedor
                     } // Fin buscar por Código de Barra
                 } // Fin busqueda de artículo

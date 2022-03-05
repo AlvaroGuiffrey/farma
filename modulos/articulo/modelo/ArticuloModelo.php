@@ -150,6 +150,8 @@ class ArticuloModelo extends ArticuloActiveRecord
 	 * Nos permite obtener un objeto de la clase VO
 	 * del articulo "activo" buscado por el código de barra.
 	 *
+	 * estado = 1
+	 *
 	 * @param $oArticuloVO string $codigoB
 	 * @return $oArticuloVO
 	 */
@@ -251,6 +253,40 @@ class ArticuloModelo extends ArticuloActiveRecord
 			}
 			$dbh=null;
 			return $oArticuloVO;
+		}catch (Exception $e){
+			echo $e;
+			echo "<br/>";
+			print_r($e->errorInfo);
+		}
+	}
+
+	/**
+	 * Nos permite obtener un array de los articulos propios activos
+	 * buscado por el codigo de barra.
+	 *
+	 * @param $oArticuloVO string $codigoB
+	 * @return $aArticulos
+	 */
+	public function findAllPorCodigoB($oArticuloVO)
+	{
+		try{
+			$dbh = DataBase::getInstance();
+			$sth = $dbh->prepare("SELECT * FROM articulos WHERE codigo_b=?
+								AND codigo>9999900000
+								AND estado=1
+			 					ORDER BY id");
+			$codigoB = $oArticuloVO->getCodigoB();
+			$sth->bindParam(1, $codigoB);
+			$sth->execute();
+			if (!$sth){
+				$oPDOe = new PDOException('Problema al intentar consultar datos.', 1);
+				$oPDOe->errorInfo = $dbh->errorInfo();
+				throw $oPDOe;
+			}
+			$aArticulos = $sth->fetchAll();
+			$this->cantidad = $sth->rowCount();
+			$dbh=null;
+			return $aArticulos;
 		}catch (Exception $e){
 			echo $e;
 			echo "<br/>";

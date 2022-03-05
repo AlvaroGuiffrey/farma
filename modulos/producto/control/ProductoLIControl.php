@@ -381,6 +381,7 @@ class ProductoLIControl
 				$oProductoVO->setIdProveedor($this->_idProveedor);
 				$this->_aProductos = $oProductoModelo->findAllPorIdProveedorParaModi($oProductoVO);
 				//echo "Cantidad de productos: ". $oProductoModelo->getCantidad()."<br>";
+				$aProductos = [];
 				foreach ($this->_aProductos as $this->_item){
 				    $aValores = array($this->_item['codigo_p'], $this->_item['codigo_b']);
 				    $aProductos[$this->_item['id']] = implode(",", $aValores);
