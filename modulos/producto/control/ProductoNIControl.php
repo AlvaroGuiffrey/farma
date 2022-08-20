@@ -20,7 +20,7 @@
  *
  * @copyright  Copyright (c) 2015 Alvaro Guiffrey <alvaroguiffrey@gmail.com>
  * @license    http://www.gnu.org/licenses/   GPL License
- * @version    3.0
+ * @version    4.0
  * @link       http://www.alvaroguiffrey.com.ar
  * @since      File available since Release 3.0
  */
@@ -60,6 +60,13 @@
   * @date       18/12/2020
   *
   */
+  /**
+   * Modificación por el cambio de lista a formato xlxs que transformamos en
+   * csv.
+   * @author     Alvaro Guiffrey
+   * @date       12/08/2022
+   *
+   */
 class ProductoNIControl
 {
 	#Propiedades
@@ -78,6 +85,7 @@ class ProductoNIControl
 	private $_cantCodigoBRep;
 	private $_cantCodigoPRep;
 	private $_cantUpdate;
+	private $_cantLista;
 	private $_renglonDesde;
 	private $_switchCaracter;
 	private $_id;
@@ -154,9 +162,12 @@ class ProductoNIControl
 		$oProductoProvVO = new ProductoProvVO();
 		$oProductoProvModelo = new ProductoProvModelo();
 		// Carga Lista del proveedor
-		$archivoTXT = $_SERVER['DOCUMENT_ROOT'].$_SESSION['dir']."/archivos/nippon.txt";
-		$contenido = file ( $archivoTXT );
-		$numero_registros = sizeof( $contenido );
+		$archivoCSV = fopen ($_SERVER['DOCUMENT_ROOT'].$_SESSION['dir']."/archivos/nippon.csv","r");
+		// Cuenta registros Lista del proveedor
+		while ($registro = fgetcsv($archivoCSV)){
+			$this->_cantLista++;
+		}
+		fclose($archivoCSV);
 
 		// Selector de acciones
 		switch ($this->_accion){
@@ -188,7 +199,7 @@ class ProductoNIControl
 				$this->_cantidad = $oProductoModelo->getCantidad();
 				$oDatoVista->setDato('{cantidad}', $this->_cantidad);
 				$oDatoVista->setDato('{cantProductos}', $this->_cantidad);
-				$oDatoVista->setDato('{cantLista}', sizeof( $contenido ));
+				$oDatoVista->setDato('{cantLista}', $this->_cantLista);
 				$this->_cantAgregados = $this->_cantActualizados = $this->_cantEliminados = 0;
 				$oDatoVista->setDato('{cantAgregados}', $this->_cantAgregados);
 				$oDatoVista->setDato('{cantActualizados}', $this->_cantActualizados);
@@ -212,12 +223,12 @@ class ProductoNIControl
 				$oDatoVista->setDato('{inicial}', $_POST['inicial']);
 				$oDatoVista->setDato('{cantidad}', $_POST['cantProductos']);
 				$oDatoVista->setDato('{cantProductos}', $_POST['cantProductos']);
-				$oDatoVista->setDato('{cantLista}', sizeof( $contenido ));
+				$oDatoVista->setDato('{cantLista}', $this->_cantLista);
 				$this->_cantAgregados = $this->_cantActualizados = $this->_cantEliminados = $this->_cantUpdate = 0;
 
 			/**
 			 * PASO 1
-			 * Borra la tabla productos_prov para limpìar datos del proceso anterior
+			 * Borra la tabla productos_prov para limpiar datos del proceso anterior
 			 * y arma tabla nueva para el proveedor.
 			 *
 			 * Archivo descargado desde la web con los siguientes parámetros:
@@ -231,30 +242,30 @@ class ProductoNIControl
 				$oProductoProvModelo->truncate();
 
 				// Arma la nueva tabla productos_prov para el proveedor
-				for( $i = 0; $i < sizeof( $contenido ); $i++) {
-				    // ----- Modificación caracteres especiales - Mod: 18/12/2020
+				$cont = 0;
+				$archivoCSV = fopen ($_SERVER['DOCUMENT_ROOT'].$_SESSION['dir']."/archivos/nippon.csv","r");
+				while ($data = fgetcsv ($archivoCSV, 1000, ";")) {
+					$cont++;
+
+					$codigoP = $data[0];
+					$codigoB = $data[1];
+					// Nombre
+					// ----- Modificación caracteres especiales - Mod: 18/12/2020
+					// ----- Modificado en esta versión - Mod: 12/08/2022
 				    if ($this->_switchCaracter == "SI") {
 				        // Si viene codificado en UTF8 pone signo ?
-					   $linea = utf8_decode(trim( $contenido[ $i ] ));
+					   $nombre = utf8_decode(trim( $data[2] ));
 				    } else {
-				       $linea = trim( $contenido[ $i ] );
+				       $nombre = trim( $data[2] );
 				    }
 				    // ----- Fin modificación
 
-					$codigoP = substr($linea, 0, 13);
-					$codigoP = trim($codigoP);
-					$codigoB = substr($linea, 14, 13);
-					$codigoB = trim($codigoB);
-					// Nombre
-					$nombre = substr($linea, 28, 30);
-					$nombre = trim($nombre);
 					// ----- Modificación caracteres especiales - Mod: 18/12/2020
 					$nombre = utf8_encode($nombre);
 					// ----- Fin modificación
-					$precio = substr($linea, 59, 6);
-					$precio =trim($precio);
+					$precio = str_replace(",", ".", $data[4]);
 					// Muestra los datos para control y prueba de la modificación
-					//echo $linea." -> $ ".$precio." / Nombre -> ".$nombre."<br>";
+					//echo " -> $ ".$precio." / Nombre -> ".$nombre."<br>";
 
 					// Agrega otros datos necesarios
 					$codigoIva = 5; // Precio final con iva incluido (21%)
@@ -275,6 +286,7 @@ class ProductoNIControl
 					$oProductoProvVO->setFechaAct($this->_date);
 					$oProductoProvModelo->insert($oProductoProvVO);
 			     } // Fin armado nueva tabla productos_prov
+
 
 			 /**
 	 		 *
@@ -323,7 +335,6 @@ class ProductoNIControl
 				    $oDatoVista->setDato('{alertaPeligro}',  'Lista del proveedor con <b>CODIGOS de BARRA repetidos</b>, CONSULTE...
                                                               <p>Son '.$this->_cantCodigoBRep.' códigos de barras repetidos en '.$this->_cantDuplicados.' productos.</p>');
 				}
-
 
 			/**
 			 *

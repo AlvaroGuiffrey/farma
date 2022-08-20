@@ -124,7 +124,7 @@ class ProductoModelo extends ProductoActiveRecord
 		}
 	}
 
-	
+
 	/**
 	 * Nos permite obtener un array de los productos activos
 	 * buscado por el id de proveedor con algunos datos para
@@ -197,7 +197,7 @@ class ProductoModelo extends ProductoActiveRecord
 	        print_r($e->errorInfo);
 	    }
 	}
-	
+
 	/**
 	 * Nos permite obtener un array de los productos
 	 * buscado por el id de proveedor y por código del proveedor.
@@ -439,6 +439,7 @@ class ProductoModelo extends ProductoActiveRecord
 			}
 			$fila = $sth->fetchObject();
 			$this->cantidad = $sth->rowCount();
+			echo "db ->".$this->cantidad."<br>";
 			if ($this->cantidad > 0) {
 			    $oProductoVO->setId($fila->id);
 			    $oProductoVO->setIdProveedor($fila->id_proveedor);
@@ -619,7 +620,7 @@ class ProductoModelo extends ProductoActiveRecord
 	/**
 	 * Nos permite obtener la cantidad de productos activos de todas las listas
 	 * de precios de todos los proveedores
-	 * 
+	 *
 	 * @param int estado = 1
 	 *
 	 * @return int $cantidad

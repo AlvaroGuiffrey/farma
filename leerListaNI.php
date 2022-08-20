@@ -19,10 +19,18 @@ Clase::define('ProductoModelo');
 Clase::define('ArticuloModelo');
 
 // Carga Lista del proveedor
-$archivoTXT = $_SERVER['DOCUMENT_ROOT'].$_SESSION['dir']."/archivos/nippon.txt";
+//$archivoTXT = $_SERVER['DOCUMENT_ROOT'].$_SESSION['dir']."/archivos/nippon.csv";
+// Carga Lista del proveedor
+$archivoCSV = fopen ($_SERVER['DOCUMENT_ROOT'].$_SESSION['dir']."/archivos/nippon.csv","r");
+// Cuenta registros Lista del proveedor
+$numero_registros = 0;
+while ($registro = fgetcsv($archivoCSV)){
+    $numero_registros++;
+}
+fclose($archivoCSV);
 //echo $archivoTXT."<br>";
-$contenido = file ( $archivoTXT );
-$numero_registros = sizeof( $contenido );
+//$contenido = file ( $archivoTXT );
+//$numero_registros = sizeof( $contenido );
 
 echo "========================================<br>";
 echo "LEE LISTA DE PRECIOS DE: </br>";
@@ -42,38 +50,22 @@ $oArticuloModelo = new ArticuloModelo();
 $oProductoVO = new ProductoVO();
 $oProductoModelo = new ProductoModelo();
 
+$archivoCSV = fopen ($_SERVER['DOCUMENT_ROOT'].$_SESSION['dir']."/archivos/nippon.csv","r");
+/**
 // Lee los productos de la lista descargada del proveedor
-for( $i = 0; $i < sizeof( $contenido ); $i++) {
-    $linea = trim( $contenido[ $i ] );
-    
-    echo $linea."<br>";
-    // Lista con caracteres especiales tiene que hacer el decode
-    // con Ñ no necesita hacerlo
-     //$linea = utf8_decode($linea); // pone el signo ? cuando viene caracter especial 
-    
-    // Lista con ÑÑÑÑÑÑÑ
-    $codigoP = substr($linea, 0, 13);
-    $codigoP = trim($codigoP);
-    $codigoB = substr($linea, 14, 13);
-    $codigoB = trim($codigoB);
-    // Nombre para prueba
-    $nombre = substr($linea, 28, 30);
-    $nombre = trim($nombre);
-    // ------ Lista de Nippon con Ñ -----------
-    $nombre = utf8_encode($nombre); // muestra las ñ
-    // ------ LIsta de NIPPON con Caracteres ------------
-    
-    // ---------------------------------------
-    $precio = substr($linea, 59, 6);
-    $precio =trim($precio);
-    // Fin lista con ÑÑÑÑÑ
-            
-    //echo $codigoP." [".$codigoB."] ".$nombreUTF8d."(".$nombreUTF8e.") $ ".$precio."<br>"; 
-    echo $codigoP." [".$codigoB."] ".$nombre." - $ ".$precio."<br>"; 
-         
-           
-} // Fin foreach que lee la lista del proveedor
-echo "-----------------------------------------------<br>";
-echo "Cantidad de artículos leidos: ".$registroD."<br>";
+while ($data = fgetcsv ($archivoCSV, 1000, ";")) {
+    $cont++;
+    $codigoP = trim($data[0]);
+    $codigoB = $data[1];
+    $nombre = $data[2];
+    $precio = str_replace(",", ".", $data[4]);
+    //echo $codigoP." [".$codigoB."] ".$nombreUTF8d."(".$nombreUTF8e.") $ ".$precio."<br>";
+    echo $codigoP." [".$codigoB."] ".$nombre." - $ ".$precio."<br>";
 
+
+} // Fin foreach que lee la lista del proveedor
+*/
+echo "-----------------------------------------------<br>";
+echo "Cantidad de artículos leidos: ".$cont."<br>";
+fclose($archivoCSV);
 ?>
