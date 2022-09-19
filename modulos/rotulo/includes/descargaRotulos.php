@@ -2,7 +2,7 @@
 /**
  * Archivo que descarga los rotulos de los artículos.
  *
- * Archivo que descarga los rótulos de los artículos ordenos por nombre.
+ * Archivo que descarga los rótulos de los artículos ordenos por presentacion, nombre.
  *
  * LICENSE:  This file is part of (SF) Sistema de Fiscales.
  * SF is free software: you can redistribute it and/or modify
@@ -65,8 +65,9 @@ foreach ($aRotulos as $row){
 	$oArticuloModelo->find($oArticuloVO);
 	$rotulo = 1; // vuelve a artículo con rótulo
 	$oArticuloVO->setRotulo($rotulo);
-	$oArticuloModelo->update($oArticuloVO);
-	
+	// Anulo el update para pruebas
+	// $oArticuloModelo->update($oArticuloVO);
+
 	// armo rotulos con datos del array $aRotulos
 	$rot++;
 	if ($rot==1){
@@ -118,7 +119,7 @@ foreach ($aRotulos as $row){
 		$precio4 = $row['precio'];
 		$fechaPrecio4 = $row['fecha_precio'];
 		$idProveedor4 = $row['id_proveedor'];
-	
+
 		$oPDF->SetFont('Arial', 'B', 10);
 		$oPDF->SetFillColor(255,255,255);
 		// Línea superior
@@ -130,7 +131,7 @@ foreach ($aRotulos as $row){
 		$oPDF->Cell(45,4,'','LR',0,'L',1);
 		$oPDF->Cell(45,4,'','LR',0,'L',1);
 		$oPDF->Ln();
-		
+
 		// Línea códigos de barra
 		$oPDF->SetFont('Arial', '', 8);
 		$oPDF->Cell(45,2,$codigoB1,'LR',0,'L',1);
@@ -138,9 +139,9 @@ foreach ($aRotulos as $row){
 		$oPDF->Cell(45,2,$codigoB3,'LR',0,'L',1);
 		$oPDF->Cell(45,2,$codigoB4,'LR',0,'L',1);
 		$oPDF->Ln();
-		
+
 		// Línea nombres
-		// Primer nombre 
+		// Primer nombre
 		if (strlen(trim($nombre1))<17){
 			$oPDF->SetFont('Arial', 'B', 12);
 		}else{
@@ -169,7 +170,7 @@ foreach ($aRotulos as $row){
 		if(strlen(trim($nombre3))>21){
 			$oPDF->SetFont('Arial', 'B', 8);
 		}
-		$oPDF->Cell(45,7,$nombre3,'LR',0,'L',1);				
+		$oPDF->Cell(45,7,$nombre3,'LR',0,'L',1);
 		// Cuarto nombre
 		if (strlen(trim($nombre4))<17){
 			$oPDF->SetFont('Arial', 'B', 12);
@@ -180,8 +181,8 @@ foreach ($aRotulos as $row){
 			$oPDF->SetFont('Arial', 'B', 8);
 		}
 		$oPDF->Cell(45,7,$nombre4,'LR',0,'L',1);
-		$oPDF->Ln(7);	
-		
+		$oPDF->Ln(7);
+
 		// Linea presentaciones
 		$oPDF->SetFont('Arial', '', 8);
 		$oPDF->Cell(45,3,$presentacion1,'LR',0,'L',1);
@@ -189,7 +190,7 @@ foreach ($aRotulos as $row){
 		$oPDF->Cell(45,3,$presentacion3,'LR',0,'L',1);
 		$oPDF->Cell(45,3,$presentacion4,'LR',0,'L',1);
 		$oPDF->Ln(4);
-	
+
 		// Linea precios
 		$oPDF->SetFont('Arial', 'B', 18);
 		$oPDF->Cell(45,9,'$'.' '.$precio1,'LR',0,'C',1);
@@ -197,7 +198,7 @@ foreach ($aRotulos as $row){
 		$oPDF->Cell(45,9,'$'.' '.$precio3,'LR',0,'C',1);
 		$oPDF->Cell(45,9,'$'.' '.$precio4,'LR',0,'C',1);
 		$oPDF->Ln();
-		
+
 		// Línea fecha
 		$oPDF->SetFont('Arial', '', 6);
 		$oPDF->Cell(45,2,$fechaPrecio1.' - Prov:('.$idProveedor1.')','LR',0,'L',1);
@@ -205,7 +206,7 @@ foreach ($aRotulos as $row){
 		$oPDF->Cell(45,2,$fechaPrecio3.' - Prov:('.$idProveedor3.')','LR',0,'L',1);
 		$oPDF->Cell(45,2,$fechaPrecio4.' - Prov:('.$idProveedor4.')','LR',0,'L',1);
 		$oPDF->Ln();
-		
+
 		// Espacios finales
 		$oPDF->SetFont('Arial', '', 8);
 		$oPDF->Cell(45,3,'','LR',0,'L',1);
@@ -213,11 +214,11 @@ foreach ($aRotulos as $row){
 		$oPDF->Cell(45,3,'','LR',0,'L',1);
 		$oPDF->Cell(45,3,'','LR',0,'L',1);
 		$oPDF->Ln();
-		
+
 		// Línea separadora
 		$oPDF->Cell(180,0,'','T');
 		$oPDF->Ln(1);
-		
+
 		// totaliza para renglones y página
 		$rot=0;
 		$pag++;
@@ -227,13 +228,13 @@ foreach ($aRotulos as $row){
 		$oPDF->AddPage();
 		$pag=0;
 	}
-	
+
 }
 	// menos de 4 rótulos
 	if ($rot<4){
 		$oPDF->SetFont('Arial', 'B', 10);
 		$oPDF->SetFillColor(255,255,255);
-		
+
 		// Línea superior
 		$oPDF->Cell(180,0,'','T');
 		$oPDF->Ln(1);
@@ -251,7 +252,7 @@ foreach ($aRotulos as $row){
 		$oPDF->Cell(45,2,$codigoB3,'LR',0,'L',1);
 		$oPDF->Cell(45,2,$codigoB4,'LR',0,'L',1);
 		$oPDF->Ln();
-		
+
 		// Línea nombres
 		// Primer nombre
 		if (strlen(trim($nombre1))<17){
@@ -294,7 +295,7 @@ foreach ($aRotulos as $row){
 		}
 		$oPDF->Cell(45,7,$nombre4,'LR',0,'L',1);
 		$oPDF->Ln(8);
-		
+
 		// Linea presentaciones
 		$oPDF->SetFont('Arial', '', 8);
 		$oPDF->Cell(45,3,$presentacion1,'LR',0,'L',1);
@@ -302,7 +303,7 @@ foreach ($aRotulos as $row){
 		$oPDF->Cell(45,3,$presentacion3,'LR',0,'L',1);
 		$oPDF->Cell(45,3,$presentacion4,'LR',0,'L',1);
 		$oPDF->Ln(4);
-		
+
 		// Linea precios
 		$oPDF->SetFont('Arial', 'B', 18);
 		$oPDF->Cell(45,9,'$'.' '.$precio1,'LR',0,'C',1);
@@ -310,7 +311,7 @@ foreach ($aRotulos as $row){
 		$oPDF->Cell(45,9,'$'.' '.$precio3,'LR',0,'C',1);
 		$oPDF->Cell(45,9,'$'.' '.$precio4,'LR',0,'C',1);
 		$oPDF->Ln();
-		
+
 		// Línea fecha
 		$oPDF->SetFont('Arial', '', 6);
 		$oPDF->Cell(45,2,$fechaPrecio1.' - Prov:('.$idProveedor1.')','LR',0,'L',1);
@@ -318,7 +319,7 @@ foreach ($aRotulos as $row){
 		$oPDF->Cell(45,2,$fechaPrecio3.' - Prov:('.$idProveedor3.')','LR',0,'L',1);
 		$oPDF->Cell(45,2,$fechaPrecio4.' - Prov:('.$idProveedor4.')','LR',0,'L',1);
 		$oPDF->Ln();
-		
+
 		// Espacios finales
 		$oPDF->SetFont('Arial', '', 8);
 		$oPDF->Cell(45,3,'','LR',0,'L',1);
@@ -326,7 +327,7 @@ foreach ($aRotulos as $row){
 		$oPDF->Cell(45,3,'','LR',0,'L',1);
 		$oPDF->Cell(45,3,'','LR',0,'L',1);
 		$oPDF->Ln();
-		
+
 		// Linea separadora
 		$oPDF->Cell(180,0,'','T');
 		$oPDF->Ln(1);

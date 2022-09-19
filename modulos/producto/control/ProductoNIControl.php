@@ -77,6 +77,7 @@ class ProductoNIControl
 	private $_cantidad;
 	private $_aProductos;
 	private $_producto;
+	private $_cantNoValidos;
 	private $_cantAgregados;
 	private $_cantActualizados;
 	private $_cantEliminados;
@@ -200,7 +201,8 @@ class ProductoNIControl
 				$oDatoVista->setDato('{cantidad}', $this->_cantidad);
 				$oDatoVista->setDato('{cantProductos}', $this->_cantidad);
 				$oDatoVista->setDato('{cantLista}', $this->_cantLista);
-				$this->_cantAgregados = $this->_cantActualizados = $this->_cantEliminados = 0;
+				$this->_cantAgregados = $this->_cantActualizados = $this->_cantEliminados = $this->_cantValidos = 0;
+				$oDatoVista->setDato('{cantValidos}', $this->_cantValidos);
 				$oDatoVista->setDato('{cantAgregados}', $this->_cantAgregados);
 				$oDatoVista->setDato('{cantActualizados}', $this->_cantActualizados);
 				$oDatoVista->setDato('{cantEliminados}', $this->_cantEliminados);
@@ -224,7 +226,7 @@ class ProductoNIControl
 				$oDatoVista->setDato('{cantidad}', $_POST['cantProductos']);
 				$oDatoVista->setDato('{cantProductos}', $_POST['cantProductos']);
 				$oDatoVista->setDato('{cantLista}', $this->_cantLista);
-				$this->_cantAgregados = $this->_cantActualizados = $this->_cantEliminados = $this->_cantUpdate = 0;
+				$this->_cantValidos = $this->_cantAgregados = $this->_cantActualizados = $this->_cantEliminados = $this->_cantUpdate = 0;
 
 			/**
 			 * PASO 1
@@ -242,13 +244,17 @@ class ProductoNIControl
 				$oProductoProvModelo->truncate();
 
 				// Arma la nueva tabla productos_prov para el proveedor
-				$cont = 0;
+
+				$cont = $contValidos = 0;
 				$archivoCSV = fopen ($_SERVER['DOCUMENT_ROOT'].$_SESSION['dir']."/archivos/nippon.csv","r");
 				while ($data = fgetcsv ($archivoCSV, 1000, ";")) {
 					$cont++;
-
+					$cargaDato = 1;
 					$codigoP = $data[0];
 					$codigoB = $data[1];
+					if ($codigoB == "") {
+						$cargaDato = 0;
+					}
 					// Nombre
 					// ----- Modificación caracteres especiales - Mod: 18/12/2020
 					// ----- Modificado en esta versión - Mod: 12/08/2022
@@ -264,6 +270,9 @@ class ProductoNIControl
 					$nombre = utf8_encode($nombre);
 					// ----- Fin modificación
 					$precio = str_replace(",", ".", $data[4]);
+					if ($precio == 0) {
+						$cargaDato = 0;
+					}
 					// Muestra los datos para control y prueba de la modificación
 					//echo " -> $ ".$precio." / Nombre -> ".$nombre."<br>";
 
@@ -284,8 +293,14 @@ class ProductoNIControl
 					$oProductoProvVO->setIdUsuarioAct($oLoginVO->getIdUsuario());
 					$this->_date = date('Y-m-d H:i:s');
 					$oProductoProvVO->setFechaAct($this->_date);
-					$oProductoProvModelo->insert($oProductoProvVO);
-			     } // Fin armado nueva tabla productos_prov
+					if ($cargaDato == 1) {
+						$contValidos++;
+						$oProductoProvModelo->insert($oProductoProvVO);
+					}
+
+			    } // Fin armado nueva tabla productos_prov
+
+				$this->_cantValidos = $contValidos;
 
 
 			 /**
@@ -557,6 +572,7 @@ class ProductoNIControl
 				$oCargarVista->setCarga('alertaSuceso', '/includes/vista/alertaSuceso.html');
 				// ingresa los datos a representar en las alertas de la vista
 				$oDatoVista->setDato('{alertaSuceso}',  'Se ejecutó la acción con <b>EXITO !!!</b>.');
+				$oDatoVista->setDato('{cantValidos}', $this->_cantValidos);
 				$oDatoVista->setDato('{cantAgregados}', $this->_cantAgregados);
 				$oDatoVista->setDato('{cantActualizados}', $this->_cantActualizados);
 				$oDatoVista->setDato('{cantEliminados}', $this->_cantEliminados);

@@ -553,7 +553,7 @@ class ArticuloModelo extends ArticuloActiveRecord
 
 	/**
 	 * Nos permite obtener un array de los articulos con rótulos para
-	 * descargar en PDF
+	 * descargar en PDF ordenados por presentación y nombre
 	 *
 	 * @return $aArticulos
 	 */
@@ -564,7 +564,7 @@ class ArticuloModelo extends ArticuloActiveRecord
 			$sth = $dbh->prepare("SELECT * FROM articulos WHERE
 									rotulo=3 AND
 									estado=1
-									ORDER BY nombre
+									ORDER BY presentacion, nombre
 								");
 			$sth->execute();
 			if (!$sth){
