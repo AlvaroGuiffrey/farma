@@ -66,7 +66,7 @@ foreach ($aRotulos as $row){
 	$rotulo = 1; // vuelve a artículo con rótulo
 	$oArticuloVO->setRotulo($rotulo);
 	// Anulo el update para pruebas
-	// $oArticuloModelo->update($oArticuloVO);
+	$oArticuloModelo->update($oArticuloVO);
 
 	// armo rotulos con datos del array $aRotulos
 	$rot++;
