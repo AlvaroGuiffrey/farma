@@ -463,7 +463,7 @@ class ProductoDSControl
 				    		$oProductoProvVO->setCodigoIva($codigoIva);
 				    		$oProductoProvVO->setTipoDescuento($tipoDescuento);
 				    		$oProductoProvVO->setEstado($estado);
-					       	$oProductoProvVO->setIdArticulo($idArticulo);
+					      $oProductoProvVO->setIdArticulo($idArticulo);
 				    		$oProductoProvVO->setIdUsuarioAct($oLoginVO->getIdUsuario());
 				    		// Inserta en la tabla producto_prov tantas veces como codigo de barras diferente tenga
 				    		foreach ($aCodigoB as $codigoB){
