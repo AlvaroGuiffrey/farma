@@ -41,7 +41,7 @@
  *
  * Síntesis modificaciones:
  * Versión 2.0 - en altas de artículos por productos nuevos solo se pone rótulo a los
- * productos con "código propio > 9999900000" y que el rubro sea > 1 (nunca pone a
+ * productos con "código propio > 999990000" y que el rubro sea > 1 (nunca pone a
  * medicamentos).
  *
  * Versión 3.0 - se revisa pasar a inactivo artículos en db farma por productos
@@ -50,9 +50,6 @@
  * Versión 4.0 - se cambia la instancia de la db plex, se abre y cierra la conexión
  * cada vez que se usa; se optimizaron los if; y se utilizan arrays para eliminar
  * los artículos que se dieron de baja en plex.
- * 
- * Versión 5.0 - Deja sin actualizar los productos cargados por error por PLEX entre 
- * los códigos 3000000000 y 3999999999
  */
 
 class ProductoPlexControl
@@ -185,8 +182,7 @@ class ProductoPlexControl
 
                 // arma la tabla de datos a representar
                 $this->_con = DataBasePlex::getInstance();
-                // Versión 5.0 descarta los productos agregados p/error p/PLEX
-                $query = "SELECT count(*) FROM productos  WHERE IDProducto < 3000000000 OR IDProducto > 3999999999";
+                $query = "SELECT count(*) FROM productos";
                 $result = mysqli_query($this->_con, $query) or die(mysqli_error($this->_con));
                 $count = mysqli_fetch_array($result);
                 mysqli_free_result($result);
@@ -206,8 +202,7 @@ class ProductoPlexControl
 														<p>productos, ver botones.</p>');
                 // arma la tabla de datos a representar
                 $this->_con = DataBasePlex::getInstance();
-                // Versión 5.0 descarta los productos agregados p/error p/PLEX
-                $query = "SELECT count(*) FROM productos WHERE IDProducto < 3000000000 OR IDProducto > 3999999999";
+                $query = "SELECT count(*) FROM productos";
                 $result = mysqli_query($this->_con, $query) or die(mysqli_error($this->_con));
                 $count = mysqli_fetch_array($result);
                 mysqli_free_result($result);
@@ -230,8 +225,7 @@ class ProductoPlexControl
 
                 // Ingresa los datos a representar en el html de la vista
                 $this->_con = DataBasePlex::getInstance();
-                // Versión 5.0 descarta los productos agregados p/error p/PLEX
-                $query = "SELECT count(*) FROM productos WHERE IDProducto < 3000000000 OR IDProducto > 3999999999";
+                $query = "SELECT count(*) FROM productos";
                 $result = mysqli_query($this->_con, $query) or die(mysqli_error($this->_con));
                 $count = mysqli_fetch_array($result); // un solo dato
                 mysqli_free_result($result);
@@ -290,9 +284,8 @@ class ProductoPlexControl
 
                 // lee la tabla productos completa (activos y ocultos)
                 $this->_con = DataBasePlex::getInstance();
-                // Versión 5.0 descarta los productos agregados p/error p/PLEX
                 $query = "SELECT IDProducto, IDLaboratorio, IDRubro, Codebar, Producto, Presentacion, Activo, Costo, Margen, idTipoIVA, visible
-								FROM productos WHERE IDProducto < 3000000000 OR IDProducto > 3999999999";
+								FROM productos";
 
                 $result = mysqli_query($this->_con, $query) or die(mysqli_error($this->_con));
                 $cuenta = mysqli_num_rows($result);
@@ -473,8 +466,7 @@ class ProductoPlexControl
                 }
                 //var_dump($this->_aCodigosArt);
                 // leo plex haber si existe producto
-                // Versión 5.0 descarta los productos agregados p/error p/PLEX
-                $query = "SELECT IDProducto FROM productos WHERE IDProducto < 3000000000 OR IDProducto > 3999999999 ORDER BY IDProducto ASC";
+                $query = "SELECT IDProducto FROM productos ORDER BY IDProducto ASC";
                 $result = mysqli_query($this->_con, $query) or die(mysqli_error($this->_con));
                 $this->_itemsPlex = mysqli_fetch_all($result); // todos los registros
                 mysqli_free_result($result);
